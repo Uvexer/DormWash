@@ -11,6 +11,10 @@
 		A80F79C22C76897400E58A79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79C12C76897400E58A79 /* ContentView.swift */; };
 		A80F79C42C76897700E58A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C32C76897700E58A79 /* Assets.xcassets */; };
 		A80F79C72C76897700E58A79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C62C76897700E58A79 /* Preview Assets.xcassets */; };
+		A80F79D02C768B8900E58A79 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = A80F79CF2C768B8900E58A79 /* SwiftSoup */; };
+		A80F79D22C76919A00E58A79 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D12C76919A00E58A79 /* SplashView.swift */; };
+		A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D32C76956A00E58A79 /* CardsNetwork.swift */; };
+		A80F79D62C76957D00E58A79 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D52C76957D00E58A79 /* Cards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		A80F79C12C76897400E58A79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A80F79C32C76897700E58A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A80F79C62C76897700E58A79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A80F79D12C76919A00E58A79 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		A80F79D32C76956A00E58A79 /* CardsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsNetwork.swift; sourceTree = "<group>"; };
+		A80F79D52C76957D00E58A79 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A80F79D02C768B8900E58A79 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +59,13 @@
 		A80F79BE2C76897400E58A79 /* DormWash */ = {
 			isa = PBXGroup;
 			children = (
+				A80F79D52C76957D00E58A79 /* Cards.swift */,
+				A80F79D12C76919A00E58A79 /* SplashView.swift */,
 				A80F79BF2C76897400E58A79 /* DormWashApp.swift */,
 				A80F79C12C76897400E58A79 /* ContentView.swift */,
 				A80F79C32C76897700E58A79 /* Assets.xcassets */,
 				A80F79C52C76897700E58A79 /* Preview Content */,
+				A80F79D32C76956A00E58A79 /* CardsNetwork.swift */,
 			);
 			path = DormWash;
 			sourceTree = "<group>";
@@ -83,6 +94,9 @@
 			dependencies = (
 			);
 			name = DormWash;
+			packageProductDependencies = (
+				A80F79CF2C768B8900E58A79 /* SwiftSoup */,
+			);
 			productName = DormWash;
 			productReference = A80F79BC2C76897400E58A79 /* DormWash.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = A80F79B32C76897400E58A79;
+			packageReferences = (
+				A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = A80F79BD2C76897400E58A79 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A80F79D62C76957D00E58A79 /* Cards.swift in Sources */,
+				A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */,
 				A80F79C22C76897400E58A79 /* ContentView.swift in Sources */,
 				A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */,
+				A80F79D22C76919A00E58A79 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A80F79CF2C768B8900E58A79 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A80F79B42C76897400E58A79 /* Project object */;
 }

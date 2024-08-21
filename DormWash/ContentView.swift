@@ -1,21 +1,29 @@
-//
-//  ContentView.swift
-//  DormWash
-//
-//  Created by bodya on 21.08.2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var cards: [Card] = []
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            ScrollView {
+                ForEach(cards) { card in
+                    HStack {
+                        Text("Card \(card.id)")
+                        Spacer()
+                        Text(card.isAvailable ? "Свободно" : "Занято")
+                    }
+                    .padding()
+                    .background(card.isAvailable ? Color.green : Color.red)
+                    .cornerRadius(10)
+                }
+            }
         }
-        .padding()
+        .onAppear {
+            print("View appeared, starting fetchData")
+            NetworkManager.fetchData { fetchedCards in
+                self.cards = fetchedCards
+            }
+        }
     }
 }
 

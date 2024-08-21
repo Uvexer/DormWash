@@ -1,10 +1,3 @@
-//
-//  DormWashApp.swift
-//  DormWash
-//
-//  Created by bodya on 21.08.2024.
-//
-
 import SwiftUI
 
 @main
