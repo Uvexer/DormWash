@@ -2,20 +2,21 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var cards: [Card] = []
+
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(cards) { card in
-                    HStack {
-                        Text("Card \(card.id)")
-                        Spacer()
-                        Text(card.isAvailable ? "Свободно" : "Занято")
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(cards) { card in
+                        CardView(card: card)
                     }
-                    .padding()
-                    .background(card.isAvailable ? Color.green : Color.red)
-                    .cornerRadius(10)
                 }
+                .padding()
             }
         }
         .onAppear {

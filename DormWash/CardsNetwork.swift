@@ -30,11 +30,16 @@ class NetworkManager {
                 var fetchedCards: [Card] = []
                 
                 for (index, element) in cardElements.enumerated() {
-               
+                    
                     let statusText = try element.select("div.p-2.text-success > div.text-center").text()
                     let isAvailable = statusText == "Свободно"
                     
-                    fetchedCards.append(Card(id: index + 1, isAvailable: isAvailable))
+                    
+                    let priceText = try element.select("span.withTooltip").text()
+                    let price = Int(priceText.replacingOccurrences(of: "₽", with: "").trimmingCharacters(in: .whitespaces)) ?? 0
+                    
+                    
+                    fetchedCards.append(Card(id: index + 1, isAvailable: isAvailable, price: price))
                 }
                 
                 print("Fetched Cards: \(fetchedCards)")
