@@ -16,6 +16,10 @@
 		A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D32C76956A00E58A79 /* CardsNetwork.swift */; };
 		A80F79D62C76957D00E58A79 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D52C76957D00E58A79 /* Cards.swift */; };
 		A8958B922C772123008ADD9F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B912C772123008ADD9F /* CardView.swift */; };
+		A8958B942C77716C008ADD9F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B932C77716C008ADD9F /* TabView.swift */; };
+		A8958B962C7776A5008ADD9F /* MachinesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B952C7776A5008ADD9F /* MachinesTabView.swift */; };
+		A8958B982C7776B6008ADD9F /* OrdersTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B972C7776B6008ADD9F /* OrdersTabView.swift */; };
+		A8958B9A2C7776CF008ADD9F /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B992C7776CF008ADD9F /* SettingsTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		A80F79D32C76956A00E58A79 /* CardsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsNetwork.swift; sourceTree = "<group>"; };
 		A80F79D52C76957D00E58A79 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		A8958B912C772123008ADD9F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		A8958B932C77716C008ADD9F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		A8958B952C7776A5008ADD9F /* MachinesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesTabView.swift; sourceTree = "<group>"; };
+		A8958B972C7776B6008ADD9F /* OrdersTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTabView.swift; sourceTree = "<group>"; };
+		A8958B992C7776CF008ADD9F /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,7 @@
 		A80F79BE2C76897400E58A79 /* DormWash */ = {
 			isa = PBXGroup;
 			children = (
+				A8958B9B2C7776FC008ADD9F /* TabView */,
 				A80F79D52C76957D00E58A79 /* Cards.swift */,
 				A80F79D12C76919A00E58A79 /* SplashView.swift */,
 				A80F79BF2C76897400E58A79 /* DormWashApp.swift */,
@@ -79,6 +88,17 @@
 				A80F79C62C76897700E58A79 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A8958B9B2C7776FC008ADD9F /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				A8958B932C77716C008ADD9F /* TabView.swift */,
+				A8958B952C7776A5008ADD9F /* MachinesTabView.swift */,
+				A8958B972C7776B6008ADD9F /* OrdersTabView.swift */,
+				A8958B992C7776CF008ADD9F /* SettingsTabView.swift */,
+			);
+			path = TabView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,8 +179,12 @@
 			files = (
 				A80F79D62C76957D00E58A79 /* Cards.swift in Sources */,
 				A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */,
+				A8958B962C7776A5008ADD9F /* MachinesTabView.swift in Sources */,
+				A8958B9A2C7776CF008ADD9F /* SettingsTabView.swift in Sources */,
 				A80F79C22C76897400E58A79 /* ContentView.swift in Sources */,
 				A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */,
+				A8958B942C77716C008ADD9F /* TabView.swift in Sources */,
+				A8958B982C7776B6008ADD9F /* OrdersTabView.swift in Sources */,
 				A8958B922C772123008ADD9F /* CardView.swift in Sources */,
 				A80F79D22C76919A00E58A79 /* SplashView.swift in Sources */,
 			);
