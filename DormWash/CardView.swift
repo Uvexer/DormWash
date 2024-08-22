@@ -28,7 +28,7 @@ struct CardView: View {
         Text("\(card.price) ₽")
             .font(.caption)
             .padding(7)
-            .background(Color.black.opacity(0.7))
+            .background(Color(card.isAvailable ? .green : .red))
             .cornerRadius(10)
             .foregroundColor(.white)
             .offset(x:-10, y: 10)
