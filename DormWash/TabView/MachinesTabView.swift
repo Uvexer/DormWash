@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MachinesTabView: View {
+    @Binding var selectedCard: Card?
     @Binding var cards: [Card]
 
     let columns = [
@@ -14,6 +15,9 @@ struct MachinesTabView: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(cards) { card in
                         CardView(card: card)
+                            .onTapGesture {
+                                selectedCard = card
+                            }
                     }
                 }
                 .padding()
@@ -21,4 +25,3 @@ struct MachinesTabView: View {
         }
     }
 }
-
