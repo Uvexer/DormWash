@@ -68,7 +68,6 @@ struct OrdersTabView: View {
         do {
             try viewContext.save()
         } catch {
-            // Handle the error here
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }

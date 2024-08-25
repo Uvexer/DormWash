@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TabBarView: View {
     @State private var cards: [Card] = []
-    @State private var selectedCard: Card? // Для отслеживания выбранной машинки
+    @State private var selectedCard: Card? 
     @State private var timer: Timer?
 
     var body: some View {
@@ -21,7 +21,7 @@ struct TabBarView: View {
                     stopFetchingData()
                 }
 
-            OrdersTabView(cards: $cards) // Передача cards в OrdersTabView
+            OrdersTabView(cards: $cards)
                 .tabItem {
                     Label("Заказы", systemImage: "star")
                 }
