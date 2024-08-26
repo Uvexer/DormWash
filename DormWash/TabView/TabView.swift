@@ -34,13 +34,21 @@ struct TabBarView: View {
     }
 
     func startFetchingData() {
-        NetworkManager.fetchData { fetchedCards in
+        NetworkManager.fetchData { fetchedCards, availableCount in
             self.cards = fetchedCards
             saveCardsToUserDefaults(fetchedCards)
-        }
+        
 
         timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
-            NetworkManager.fetchData { fetchedCards in
+            NetworkManager.fetchData { fetchedCards, availableCount in
+                self.cards = fetchedCards
+                saveCardsToUserDefaults(fetchedCards)
+            }
+        }
+    }
+
+        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
+            NetworkManager.fetchData { fetchedCards, availableCount in
                 self.cards = fetchedCards
                 saveCardsToUserDefaults(fetchedCards)
             }

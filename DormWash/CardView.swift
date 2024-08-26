@@ -6,8 +6,15 @@ struct CardView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("Машинка \(card.id)")
-                .font(.headline)
+            ZStack {
+                Circle()
+                    .stroke(card.isAvailable ? Color.green : Color.red, lineWidth: 3)
+                    .frame(width: 60, height: 60)
+                Text("\(card.id)")
+                    .foregroundColor(.black)
+                    .font(.headline)
+            }
+
         
             Spacer()
             Text(card.isAvailable ? "Свободно" : "Занято")
