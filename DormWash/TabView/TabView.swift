@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @Environment(\.scenePhase) var scenePhase
     @State private var cards: [Card] = []
-    @State private var selectedCard: Card? 
+    @State private var selectedCard: Card?
     @State private var timer: Timer?
 
     var body: some View {
@@ -31,24 +32,23 @@ struct TabBarView: View {
                     Label("Настройки", systemImage: "gear")
                 }
         }
-    }
-
-    func startFetchingData() {
-        NetworkManager.fetchData { fetchedCards, availableCount in
-            self.cards = fetchedCards
-            saveCardsToUserDefaults(fetchedCards)
-        
-
-        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
-            NetworkManager.fetchData { fetchedCards, availableCount in
-                self.cards = fetchedCards
-                saveCardsToUserDefaults(fetchedCards)
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                startFetchingData()
+            } else if newPhase == .background {
+                stopFetchingData()
             }
         }
     }
 
+    func startFetchingData() {
+        NetworkManager.fetchData { fetchedCards in
+            self.cards = fetchedCards
+            saveCardsToUserDefaults(fetchedCards)
+        }
+
         timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
-            NetworkManager.fetchData { fetchedCards, availableCount in
+            NetworkManager.fetchData { fetchedCards in
                 self.cards = fetchedCards
                 saveCardsToUserDefaults(fetchedCards)
             }
@@ -60,9 +60,17 @@ struct TabBarView: View {
         timer = nil
     }
     
+    let userDefaults = UserDefaults(suiteName: "group.com.ghghg.DormWash")
     func saveCardsToUserDefaults(_ cards: [Card]) {
         let cardsData = cards.map { ["id": "\($0.id)", "isAvailable": $0.isAvailable ? "true" : "false", "price": "\($0.price)"] }
-        UserDefaults.standard.set(cardsData, forKey: "cachedCards")
+        userDefaults?.set(cardsData, forKey: "cachedCards")
+        userDefaults?.synchronize()
+
+        if let savedData = userDefaults?.array(forKey: "cachedCards") {
+            print("Данные успешно сохранены: \(savedData)")
+        } else {
+            print("Не удалось сохранить данные в UserDefaults")
+        }
     }
     
     func loadCardsFromUserDefaults() -> [Card] {

@@ -8,41 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79BF2C76897400E58A79 /* DormWashApp.swift */; };
-		A80F79C22C76897400E58A79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79C12C76897400E58A79 /* ContentView.swift */; };
 		A80F79C42C76897700E58A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C32C76897700E58A79 /* Assets.xcassets */; };
 		A80F79C72C76897700E58A79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C62C76897700E58A79 /* Preview Assets.xcassets */; };
 		A80F79D02C768B8900E58A79 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = A80F79CF2C768B8900E58A79 /* SwiftSoup */; };
 		A80F79D22C76919A00E58A79 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D12C76919A00E58A79 /* SplashView.swift */; };
 		A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D32C76956A00E58A79 /* CardsNetwork.swift */; };
 		A80F79D62C76957D00E58A79 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D52C76957D00E58A79 /* Cards.swift */; };
-		A815F8432C7D160300785CE6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8422C7D160300785CE6 /* WidgetKit.framework */; };
-		A815F8452C7D160300785CE6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8442C7D160300785CE6 /* SwiftUI.framework */; };
-		A815F8482C7D160300785CE6 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815F8472C7D160300785CE6 /* WidgetConfiguration.swift */; };
-		A815F84A2C7D160300785CE6 /* WidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815F8492C7D160300785CE6 /* WidgetProvider.swift */; };
-		A815F84C2C7D160300785CE6 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815F84B2C7D160300785CE6 /* WidgetView.swift */; };
-		A815F84E2C7D160800785CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A815F84D2C7D160800785CE6 /* Assets.xcassets */; };
-		A815F8522C7D160800785CE6 /* washwidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A815F8402C7D160300785CE6 /* washwidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A815F8582C7D181800785CE6 /* WidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815F8572C7D181800785CE6 /* WidgetEntry.swift */; };
-		A815F8592C7D181800785CE6 /* WidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815F8572C7D181800785CE6 /* WidgetEntry.swift */; };
-		A815F85A2C7D1C1E00785CE6 /* CardsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D32C76956A00E58A79 /* CardsNetwork.swift */; };
-		A815F85B2C7D1C4000785CE6 /* WidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815F8492C7D160300785CE6 /* WidgetProvider.swift */; };
-		A815F85C2C7D1CF600785CE6 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B932C77716C008ADD9F /* TabView.swift */; };
-		A815F85D2C7D1CF900785CE6 /* MachinesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B952C7776A5008ADD9F /* MachinesTabView.swift */; };
-		A815F85E2C7D1CFC00785CE6 /* OrdersTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B972C7776B6008ADD9F /* OrdersTabView.swift */; };
-		A815F8602C7D1D0300785CE6 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B992C7776CF008ADD9F /* SettingsTabView.swift */; };
-		A815F8612C7D1D0600785CE6 /* addOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D50E2C798EB4008E5C78 /* addOrder.swift */; };
-		A815F8622C7D1D0800785CE6 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D5122C79967C008E5C78 /* PersistenceController.swift */; };
-		A815F8632C7D1D0B00785CE6 /* MachineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D5102C798F4E008E5C78 /* MachineSelectionView.swift */; };
-		A815F8642C7D1D0F00785CE6 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D52C76957D00E58A79 /* Cards.swift */; };
-		A815F8652C7D1D1200785CE6 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D12C76919A00E58A79 /* SplashView.swift */; };
-		A815F8672C7D1D1800785CE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79C12C76897400E58A79 /* ContentView.swift */; };
-		A815F8682C7D1D1D00785CE6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B912C772123008ADD9F /* CardView.swift */; };
-		A815F86A2C7D1D2600785CE6 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815F84B2C7D160300785CE6 /* WidgetView.swift */; };
-		A815F86C2C7D1D2A00785CE6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A815F84F2C7D160800785CE6 /* Info.plist */; };
+		A815F86D2C7D219100785CE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79C12C76897400E58A79 /* ContentView.swift */; };
 		A853D50B2C798C7D008E5C78 /* DormWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */; };
 		A853D50F2C798EB4008E5C78 /* addOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D50E2C798EB4008E5C78 /* addOrder.swift */; };
 		A853D5112C798F4E008E5C78 /* MachineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D5102C798F4E008E5C78 /* MachineSelectionView.swift */; };
 		A853D5132C79967C008E5C78 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D5122C79967C008E5C78 /* PersistenceController.swift */; };
+		A88031382C7E4F1F00E10E01 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8422C7D160300785CE6 /* WidgetKit.framework */; };
+		A88031392C7E4F1F00E10E01 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8442C7D160300785CE6 /* SwiftUI.framework */; };
+		A880313C2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A880313B2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift */; };
+		A88031402C7E4F1F00E10E01 /* CardStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A880313F2C7E4F1F00E10E01 /* CardStatusWidget.swift */; };
+		A88031422C7E4F2300E10E01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88031412C7E4F2300E10E01 /* Assets.xcassets */; };
+		A88031462C7E4F2300E10E01 /* CardStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A88031372C7E4F1F00E10E01 /* CardStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A880314B2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A880314A2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift */; };
 		A8958B922C772123008ADD9F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B912C772123008ADD9F /* CardView.swift */; };
 		A8958B942C77716C008ADD9F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B932C77716C008ADD9F /* TabView.swift */; };
 		A8958B962C7776A5008ADD9F /* MachinesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B952C7776A5008ADD9F /* MachinesTabView.swift */; };
@@ -51,12 +34,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A815F8502C7D160800785CE6 /* PBXContainerItemProxy */ = {
+		A88031442C7E4F2300E10E01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A80F79B42C76897400E58A79 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A815F83F2C7D160300785CE6;
-			remoteInfo = washwidgetExtension;
+			remoteGlobalIDString = A88031362C7E4F1F00E10E01;
+			remoteInfo = CardStatusWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -67,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A815F8522C7D160800785CE6 /* washwidgetExtension.appex in Embed Foundation Extensions */,
+				A88031462C7E4F2300E10E01 /* CardStatusWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,19 +66,19 @@
 		A80F79D12C76919A00E58A79 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A80F79D32C76956A00E58A79 /* CardsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsNetwork.swift; sourceTree = "<group>"; };
 		A80F79D52C76957D00E58A79 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
-		A815F8402C7D160300785CE6 /* washwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = washwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A815F8422C7D160300785CE6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A815F8442C7D160300785CE6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		A815F8472C7D160300785CE6 /* WidgetConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfiguration.swift; sourceTree = "<group>"; };
-		A815F8492C7D160300785CE6 /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
-		A815F84B2C7D160300785CE6 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
-		A815F84D2C7D160800785CE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A815F84F2C7D160800785CE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A815F8572C7D181800785CE6 /* WidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntry.swift; sourceTree = "<group>"; };
 		A853D50A2C798C7D008E5C78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A853D50E2C798EB4008E5C78 /* addOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addOrder.swift; sourceTree = "<group>"; };
 		A853D5102C798F4E008E5C78 /* MachineSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineSelectionView.swift; sourceTree = "<group>"; };
 		A853D5122C79967C008E5C78 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		A88031372C7E4F1F00E10E01 /* CardStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CardStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A880313B2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusWidgetBundle.swift; sourceTree = "<group>"; };
+		A880313F2C7E4F1F00E10E01 /* CardStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusWidget.swift; sourceTree = "<group>"; };
+		A88031412C7E4F2300E10E01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A88031432C7E4F2300E10E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A880314A2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusWidgetEntryView.swift; sourceTree = "<group>"; };
+		A880314E2C7E556200E10E01 /* CardStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		A8958B912C772123008ADD9F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		A8958B932C77716C008ADD9F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		A8958B952C7776A5008ADD9F /* MachinesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesTabView.swift; sourceTree = "<group>"; };
@@ -112,12 +95,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A815F83D2C7D160300785CE6 /* Frameworks */ = {
+		A88031342C7E4F1F00E10E01 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A815F8452C7D160300785CE6 /* SwiftUI.framework in Frameworks */,
-				A815F8432C7D160300785CE6 /* WidgetKit.framework in Frameworks */,
+				A88031392C7E4F1F00E10E01 /* SwiftUI.framework in Frameworks */,
+				A88031382C7E4F1F00E10E01 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,8 +110,9 @@
 		A80F79B32C76897400E58A79 = {
 			isa = PBXGroup;
 			children = (
+				A880314E2C7E556200E10E01 /* CardStatusWidgetExtension.entitlements */,
 				A80F79BE2C76897400E58A79 /* DormWash */,
-				A815F8462C7D160300785CE6 /* washwidget */,
+				A880313A2C7E4F1F00E10E01 /* CardStatusWidget */,
 				A815F8412C7D160300785CE6 /* Frameworks */,
 				A80F79BD2C76897400E58A79 /* Products */,
 			);
@@ -138,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				A80F79BC2C76897400E58A79 /* DormWash.app */,
-				A815F8402C7D160300785CE6 /* washwidgetExtension.appex */,
+				A88031372C7E4F1F00E10E01 /* CardStatusWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,17 +160,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A815F8462C7D160300785CE6 /* washwidget */ = {
+		A880313A2C7E4F1F00E10E01 /* CardStatusWidget */ = {
 			isa = PBXGroup;
 			children = (
-				A815F8472C7D160300785CE6 /* WidgetConfiguration.swift */,
-				A815F8492C7D160300785CE6 /* WidgetProvider.swift */,
-				A815F84B2C7D160300785CE6 /* WidgetView.swift */,
-				A815F84D2C7D160800785CE6 /* Assets.xcassets */,
-				A815F84F2C7D160800785CE6 /* Info.plist */,
-				A815F8572C7D181800785CE6 /* WidgetEntry.swift */,
+				A880313B2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift */,
+				A880313F2C7E4F1F00E10E01 /* CardStatusWidget.swift */,
+				A88031412C7E4F2300E10E01 /* Assets.xcassets */,
+				A88031432C7E4F2300E10E01 /* Info.plist */,
+				A880314A2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift */,
 			);
-			path = washwidget;
+			path = CardStatusWidget;
 			sourceTree = "<group>";
 		};
 		A8958B9B2C7776FC008ADD9F /* TabView */ = {
@@ -219,7 +202,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A815F8512C7D160800785CE6 /* PBXTargetDependency */,
+				A88031452C7E4F2300E10E01 /* PBXTargetDependency */,
 			);
 			name = DormWash;
 			packageProductDependencies = (
@@ -229,21 +212,21 @@
 			productReference = A80F79BC2C76897400E58A79 /* DormWash.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A815F83F2C7D160300785CE6 /* washwidgetExtension */ = {
+		A88031362C7E4F1F00E10E01 /* CardStatusWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A815F8562C7D160800785CE6 /* Build configuration list for PBXNativeTarget "washwidgetExtension" */;
+			buildConfigurationList = A88031492C7E4F2300E10E01 /* Build configuration list for PBXNativeTarget "CardStatusWidgetExtension" */;
 			buildPhases = (
-				A815F83C2C7D160300785CE6 /* Sources */,
-				A815F83D2C7D160300785CE6 /* Frameworks */,
-				A815F83E2C7D160300785CE6 /* Resources */,
+				A88031332C7E4F1F00E10E01 /* Sources */,
+				A88031342C7E4F1F00E10E01 /* Frameworks */,
+				A88031352C7E4F1F00E10E01 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = washwidgetExtension;
-			productName = washwidgetExtension;
-			productReference = A815F8402C7D160300785CE6 /* washwidgetExtension.appex */;
+			name = CardStatusWidgetExtension;
+			productName = CardStatusWidgetExtension;
+			productReference = A88031372C7E4F1F00E10E01 /* CardStatusWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -259,7 +242,7 @@
 					A80F79BB2C76897400E58A79 = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					A815F83F2C7D160300785CE6 = {
+					A88031362C7E4F1F00E10E01 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
@@ -281,7 +264,7 @@
 			projectRoot = "";
 			targets = (
 				A80F79BB2C76897400E58A79 /* DormWash */,
-				A815F83F2C7D160300785CE6 /* washwidgetExtension */,
+				A88031362C7E4F1F00E10E01 /* CardStatusWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -296,12 +279,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A815F83E2C7D160300785CE6 /* Resources */ = {
+		A88031352C7E4F1F00E10E01 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A815F86C2C7D1D2A00785CE6 /* Info.plist in Resources */,
-				A815F84E2C7D160800785CE6 /* Assets.xcassets in Resources */,
+				A88031422C7E4F2300E10E01 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,54 +296,38 @@
 			files = (
 				A80F79D62C76957D00E58A79 /* Cards.swift in Sources */,
 				A853D5132C79967C008E5C78 /* PersistenceController.swift in Sources */,
+				A815F86D2C7D219100785CE6 /* ContentView.swift in Sources */,
 				A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */,
 				A8958B962C7776A5008ADD9F /* MachinesTabView.swift in Sources */,
 				A8958B9A2C7776CF008ADD9F /* SettingsTabView.swift in Sources */,
-				A80F79C22C76897400E58A79 /* ContentView.swift in Sources */,
-				A815F86A2C7D1D2600785CE6 /* WidgetView.swift in Sources */,
 				A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */,
 				A853D50F2C798EB4008E5C78 /* addOrder.swift in Sources */,
 				A8958B942C77716C008ADD9F /* TabView.swift in Sources */,
 				A8958B982C7776B6008ADD9F /* OrdersTabView.swift in Sources */,
-				A815F8582C7D181800785CE6 /* WidgetEntry.swift in Sources */,
 				A8958B922C772123008ADD9F /* CardView.swift in Sources */,
 				A853D5112C798F4E008E5C78 /* MachineSelectionView.swift in Sources */,
 				A853D50B2C798C7D008E5C78 /* DormWash.xcdatamodeld in Sources */,
-				A815F85B2C7D1C4000785CE6 /* WidgetProvider.swift in Sources */,
 				A80F79D22C76919A00E58A79 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A815F83C2C7D160300785CE6 /* Sources */ = {
+		A88031332C7E4F1F00E10E01 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A815F8482C7D160300785CE6 /* WidgetConfiguration.swift in Sources */,
-				A815F84C2C7D160300785CE6 /* WidgetView.swift in Sources */,
-				A815F8652C7D1D1200785CE6 /* SplashView.swift in Sources */,
-				A815F8612C7D1D0600785CE6 /* addOrder.swift in Sources */,
-				A815F8642C7D1D0F00785CE6 /* Cards.swift in Sources */,
-				A815F8622C7D1D0800785CE6 /* PersistenceController.swift in Sources */,
-				A815F8672C7D1D1800785CE6 /* ContentView.swift in Sources */,
-				A815F8592C7D181800785CE6 /* WidgetEntry.swift in Sources */,
-				A815F8602C7D1D0300785CE6 /* SettingsTabView.swift in Sources */,
-				A815F8682C7D1D1D00785CE6 /* CardView.swift in Sources */,
-				A815F84A2C7D160300785CE6 /* WidgetProvider.swift in Sources */,
-				A815F85D2C7D1CF900785CE6 /* MachinesTabView.swift in Sources */,
-				A815F85C2C7D1CF600785CE6 /* TabView.swift in Sources */,
-				A815F85A2C7D1C1E00785CE6 /* CardsNetwork.swift in Sources */,
-				A815F8632C7D1D0B00785CE6 /* MachineSelectionView.swift in Sources */,
-				A815F85E2C7D1CFC00785CE6 /* OrdersTabView.swift in Sources */,
+				A880314B2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift in Sources */,
+				A880313C2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift in Sources */,
+				A88031402C7E4F1F00E10E01 /* CardStatusWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A815F8512C7D160800785CE6 /* PBXTargetDependency */ = {
+		A88031452C7E4F2300E10E01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A815F83F2C7D160300785CE6 /* washwidgetExtension */;
-			targetProxy = A815F8502C7D160800785CE6 /* PBXContainerItemProxy */;
+			target = A88031362C7E4F1F00E10E01 /* CardStatusWidgetExtension */;
+			targetProxy = A88031442C7E4F2300E10E01 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -553,17 +519,18 @@
 			};
 			name = Release;
 		};
-		A815F8542C7D160800785CE6 /* Debug */ = {
+		A88031472C7E4F2300E10E01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CardStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FK4VB24PPQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = washwidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = washwidget;
+				INFOPLIST_FILE = CardStatusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CardStatusWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -571,7 +538,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ghghg.DormWash.washwidget;
+				PRODUCT_BUNDLE_IDENTIFIER = ghghg.DormWash.CardStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -584,17 +551,18 @@
 			};
 			name = Debug;
 		};
-		A815F8552C7D160800785CE6 /* Release */ = {
+		A88031482C7E4F2300E10E01 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CardStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FK4VB24PPQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = washwidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = washwidget;
+				INFOPLIST_FILE = CardStatusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CardStatusWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -602,7 +570,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ghghg.DormWash.washwidget;
+				PRODUCT_BUNDLE_IDENTIFIER = ghghg.DormWash.CardStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -636,11 +604,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A815F8562C7D160800785CE6 /* Build configuration list for PBXNativeTarget "washwidgetExtension" */ = {
+		A88031492C7E4F2300E10E01 /* Build configuration list for PBXNativeTarget "CardStatusWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A815F8542C7D160800785CE6 /* Debug */,
-				A815F8552C7D160800785CE6 /* Release */,
+				A88031472C7E4F2300E10E01 /* Debug */,
+				A88031482C7E4F2300E10E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
