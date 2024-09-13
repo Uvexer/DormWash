@@ -23,7 +23,7 @@ struct CardView: View {
         .padding()
         .frame(maxWidth: .infinity)
         .aspectRatio(1, contentMode: .fit)
-        .background(Color.white)
+        .background(Color.white.opacity(0.8))
         .cornerRadius(10)
         .shadow(radius: 6)
         .overlay(
@@ -42,4 +42,5 @@ struct CardView: View {
             .offset(x:-10, y: 10)
     }
 }
+
 

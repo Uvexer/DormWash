@@ -23,5 +23,6 @@ struct MachinesTabView: View {
                 .padding()
             }
         }
+        .animatedGradientBackground() 
     }
 }

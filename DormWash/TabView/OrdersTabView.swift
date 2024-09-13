@@ -37,6 +37,7 @@ struct OrdersTabView: View {
             
 
             }
+            .animatedGradientBackground()
         }
     }
     
