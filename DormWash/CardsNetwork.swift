@@ -12,7 +12,7 @@ class NetworkManager {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                print("Failed to load data: \(error)")
+                print("Failed to load data: \(error.localizedDescription)")
                 return
             }
             guard let data = data else {
@@ -20,36 +20,34 @@ class NetworkManager {
                 return
             }
             
-            do {
-                let html = String(data: data, encoding: .utf8) ?? ""
-                let document = try SwiftSoup.parse(html)
-                
-                print("HTML Document Loaded")
-                
-                let cardElements = try document.select("div.childItem")
-                var fetchedCards: [Card] = []
-                
-                for (index, element) in cardElements.enumerated() {
+            DispatchQueue.global(qos: .userInitiated).async {
+                do {
+                    let html = String(data: data, encoding: .utf8) ?? ""
+                    let document = try SwiftSoup.parse(html)
                     
-                    let statusText = try element.select("div.p-2.text-success > div.text-center").text()
-                    let isAvailable = statusText == "Свободно"
+                    print("HTML Document Loaded")
                     
+                    let cardElements = try document.select("div.childItem")
+                    let fetchedCards: [Card] = try cardElements.enumerated().compactMap { (index, element) -> Card? in
+                        let statusText = try element.select("div.p-2.text-success > div.text-center").text()
+                        let isAvailable = statusText == "Свободно"
+                        
+                        let priceText = try element.select("span.withTooltip").text()
+                        let price = Int(priceText.replacingOccurrences(of: "₽", with: "").trimmingCharacters(in: .whitespaces)) ?? 0
+                        
+                        return Card(id: index + 1, isAvailable: isAvailable, price: price)
+                    }
                     
-                    let priceText = try element.select("span.withTooltip").text()
-                    let price = Int(priceText.replacingOccurrences(of: "₽", with: "").trimmingCharacters(in: .whitespaces)) ?? 0
+                    print("Fetched Cards: \(fetchedCards)")
                     
-                    
-                    fetchedCards.append(Card(id: index + 1, isAvailable: isAvailable, price: price))
+                    DispatchQueue.main.async {
+                        completion(fetchedCards)
+                    }
+                } catch {
+                    print("Ошибка при парсинге HTML: \(error.localizedDescription)")
                 }
-                
-                print("Fetched Cards: \(fetchedCards)")
-                
-                DispatchQueue.main.async {
-                    completion(fetchedCards)
-                }
-            } catch {
-                print("Ошибка при парсинге HTML: \(error)")
             }
         }.resume()
     }
 }
+
