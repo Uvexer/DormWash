@@ -86,6 +86,7 @@
 		A8958B952C7776A5008ADD9F /* MachinesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesTabView.swift; sourceTree = "<group>"; };
 		A8958B972C7776B6008ADD9F /* OrdersTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTabView.swift; sourceTree = "<group>"; };
 		A8958B992C7776CF008ADD9F /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		A8DAC7B02CA1F392005C95C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +133,7 @@
 		A80F79BE2C76897400E58A79 /* DormWash */ = {
 			isa = PBXGroup;
 			children = (
+				A8DAC7B02CA1F392005C95C6 /* Info.plist */,
 				A8958B9B2C7776FC008ADD9F /* TabView */,
 				A80F79D52C76957D00E58A79 /* Cards.swift */,
 				A80F79D12C76919A00E58A79 /* SplashView.swift */,
@@ -467,6 +469,7 @@
 				DEVELOPMENT_TEAM = FK4VB24PPQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DormWash/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -501,6 +504,7 @@
 				DEVELOPMENT_TEAM = FK4VB24PPQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DormWash/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

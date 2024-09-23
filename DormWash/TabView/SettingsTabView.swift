@@ -40,30 +40,37 @@ struct MailView: UIViewControllerRepresentable {
 struct SettingsTabView: View {
     @State private var isShowingMailView = false
     @State private var isMailViewAvailable = MFMailComposeViewController.canSendMail()
-    
+
     var body: some View {
         ZStack {
-            Color.clear
-            
-            Button(action: {
-                if isMailViewAvailable {
-                    isShowingMailView.toggle()
+            // Градиент на всём экране
+            LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
+
+            // List с прозрачными ячейками
+            List {
+                Section {
+                    Button(action: {
+                        if isMailViewAvailable {
+                            isShowingMailView.toggle()
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                            Text("Написать разработчику")
+                        }
+                        .foregroundColor(.white) // Цвет текста
+                    }
+                    .listRowBackground(Color.clear) 
                 }
-            }) {
-                Text("Написать разработчику")
-                    .font(.title2)
-                    .padding()
-                    .background(Color.white.opacity(0.8))
-                    .foregroundColor(.blue)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
             }
+            .listStyle(InsetGroupedListStyle())
+            .background(Color.clear)
         }
-        .animatedGradientBackground()
-        .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $isShowingMailView) {
             MailView(recipients: ["m2112619@edu.misis.ru"], subject: "Обратная связь", messageBody: "")
         }
     }
 }
+
 
