@@ -40,14 +40,13 @@ struct MailView: UIViewControllerRepresentable {
 struct SettingsTabView: View {
     @State private var isShowingMailView = false
     @State private var isMailViewAvailable = MFMailComposeViewController.canSendMail()
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
 
     var body: some View {
         ZStack {
-            // Градиент на всём экране
-            LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: isDarkMode ? [.black, .gray] : [.blue, .purple]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
-
-            // List с прозрачными ячейками
+            
             List {
                 Section {
                     Button(action: {
@@ -59,9 +58,17 @@ struct SettingsTabView: View {
                             Image(systemName: "envelope.fill")
                             Text("Написать разработчику")
                         }
-                        .foregroundColor(.white) // Цвет текста
+                        .foregroundColor(.white)
                     }
-                    .listRowBackground(Color.clear) 
+                    .listRowBackground(Color.clear)
+                }
+
+                Section(header: Text("Настройки темы").foregroundColor(.white)) {
+                    Toggle(isOn: $isDarkMode) {
+                        Text(isDarkMode ? "Тёмная тема" : "Светлая тема")
+                            .foregroundColor(.white)
+                    }
+                    .listRowBackground(Color.clear)
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -70,6 +77,7 @@ struct SettingsTabView: View {
         .sheet(isPresented: $isShowingMailView) {
             MailView(recipients: ["m2112619@edu.misis.ru"], subject: "Обратная связь", messageBody: "")
         }
+        .preferredColorScheme(isDarkMode ? .dark : .light) 
     }
 }
 
