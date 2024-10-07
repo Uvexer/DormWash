@@ -8,13 +8,23 @@ struct DormWashApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let persistenceController = PersistenceController.shared
 
+    @State private var isDataLoaded = false
+    @State private var cards: [Card] = []
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if isDataLoaded {
+              
+                TabBarView(cards: $cards)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            } else {
+             
+                SplashView(isDataLoaded: $isDataLoaded, cards: $cards)
+            }
         }
     }
 }
+
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
@@ -37,10 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
   
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         NetworkManager.fetchData { fetchedCards in
-     
             self.saveCardsToUserDefaults(fetchedCards)
-
-        
             completionHandler(.newData)
         }
     }

@@ -1,38 +1,29 @@
 import SwiftUI
 
-struct SplashView:View {
-    @State private var isActive = false
-    @State private var size = 0.8
-    @State private var opacity = 0.5
-    
+struct SplashView: View {
+    @Binding var isDataLoaded: Bool
+    @Binding var cards: [Card]
+
     var body: some View {
-        if isActive {
-            ContentView()
-        }else{
-            
-            VStack{
-                VStack{
-                    Image("dorm")
-                }
-                .scaleEffect(size)
-                .opacity(opacity)
-                .onAppear(){
-                    withAnimation(.easeIn(duration: 1.2)){
-                        self.size = 0.9
-                        self.opacity = 1.0
+        VStack {
+            Text("Loading...")
+                .font(.largeTitle)
+                .onAppear {
+                  
+                    NetworkManager.fetchData { fetchedCards in
+                        self.cards = fetchedCards
+                        saveCardsToUserDefaults(fetchedCards)
+                       
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.isDataLoaded = true
+                        }
                     }
-                    
                 }
-            }
-            .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
-                   withAnimation{
-                       self.isActive = true
-                   }
-                   
-                }
-            }
         }
     }
     
+    func saveCardsToUserDefaults(_ cards: [Card]) {
+        let cardsData = cards.map { ["id": "\($0.id)", "isAvailable": $0.isAvailable ? "true" : "false", "price": "\($0.price)"] }
+        UserDefaults.standard.set(cardsData, forKey: "cachedCards")
+    }
 }
