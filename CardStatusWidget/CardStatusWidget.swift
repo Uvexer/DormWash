@@ -1,52 +1,47 @@
 import WidgetKit
 import SwiftUI
+import Combine
 
-struct CardEntry: TimelineEntry {
+struct CardsWidgetEntry: TimelineEntry {
     let date: Date
-    let availableCount: Int
+    let availableCardsCount: Int
 }
 
-struct CardProvider: TimelineProvider {
-    func placeholder(in context: Context) -> CardEntry {
-        CardEntry(date: Date(), availableCount: 0)
+struct CardsWidgetProvider: TimelineProvider {
+    func placeholder(in context: Context) -> CardsWidgetEntry {
+        CardsWidgetEntry(date: Date(), availableCardsCount: 0)
     }
-    
-    func getSnapshot(in context: Context, completion: @escaping (CardEntry) -> ()) {
-        let entry = CardEntry(date: Date(), availableCount: fetchAvailableCardsCount())
+
+    func getSnapshot(in context: Context, completion: @escaping (CardsWidgetEntry) -> ()) {
+        let entry = CardsWidgetEntry(date: Date(), availableCardsCount: 0)
         completion(entry)
     }
-    
-    func getTimeline(in context: Context, completion: @escaping (Timeline<CardEntry>) -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Задержка на 1 секунду
-            var entries: [CardEntry] = []
-            
-            let currentDate = Date()
-            for hourOffset in 0..<24 {
-                let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset * 10, to: currentDate)!
-                let entry = CardEntry(date: entryDate, availableCount: fetchAvailableCardsCount())
-                entries.append(entry)
-            }
-            
-            let timeline = Timeline(entries: entries, policy: .atEnd)
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<CardsWidgetEntry>) -> ()) {
+        NetworkManager.fetchData { fetchedCards in
+            let availableCardsCount = fetchedCards.filter { $0.isAvailable }.count
+            let entry = CardsWidgetEntry(date: Date(), availableCardsCount: availableCardsCount)
+
+         
+            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
+            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
             completion(timeline)
         }
     }
-    
-    
-    let userDefaults = UserDefaults(suiteName: "group.com.ghghg.DormWash")
-    func fetchAvailableCardsCount() -> Int {
-        guard let savedCardsData = UserDefaults.standard.array(forKey: "cachedCards") as? [[String: String]] else {
-            print("Нет данных в UserDefaults")
-            return 0
+}
+
+struct CardsWidgetView: View {
+    var entry: CardsWidgetProvider.Entry
+
+    var body: some View {
+        VStack {
+            Text("Свободно Стиралок")
+                .font(.headline)
+            Text("\(entry.availableCardsCount - 1)")
+                .font(.largeTitle)
+                .bold()
         }
-        
-        let availableCards = savedCardsData.filter { dict in
-            dict["isAvailable"] == "true"
-        }
-        
-        print("Доступные карточки: \(availableCards.count)")
-        
-        return availableCards.count
+        .padding()
+        .containerBackground(.regularMaterial, for: .widget)
     }
-    
 }

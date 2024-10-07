@@ -32,6 +32,7 @@
 		A8958B962C7776A5008ADD9F /* MachinesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B952C7776A5008ADD9F /* MachinesTabView.swift */; };
 		A8958B982C7776B6008ADD9F /* OrdersTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B972C7776B6008ADD9F /* OrdersTabView.swift */; };
 		A8958B9A2C7776CF008ADD9F /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B992C7776CF008ADD9F /* SettingsTabView.swift */; };
+		A8BC765D2CB45568004DC661 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = A8BC765C2CB45568004DC661 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 			files = (
 				A88031392C7E4F1F00E10E01 /* SwiftUI.framework in Frameworks */,
 				A88031382C7E4F1F00E10E01 /* WidgetKit.framework in Frameworks */,
+				A8BC765D2CB45568004DC661 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +638,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		A80F79CF2C768B8900E58A79 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		A8BC765C2CB45568004DC661 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;

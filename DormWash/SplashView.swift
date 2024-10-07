@@ -14,7 +14,7 @@ struct SplashView: View {
                         self.cards = fetchedCards
                         saveCardsToUserDefaults(fetchedCards)
                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             self.isDataLoaded = true
                         }
                     }

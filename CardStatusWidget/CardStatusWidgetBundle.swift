@@ -1,15 +1,15 @@
 import SwiftUI
 import WidgetKit
 @main
-struct CardStatusWidget: Widget {
-    let kind: String = "CardStatusWidget"
+struct CardsWidget: Widget {
+    let kind: String = "CardsWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CardProvider()) { entry in
-            CardStatusWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: CardsWidgetProvider()) { entry in
+            CardsWidgetView(entry: entry)
         }
-        .configurationDisplayName("Статус Карточек")
-        .description("Показывает количество свободных карточек.")
+        .configurationDisplayName("Available Cards")
+        .description("Shows the number of available cards.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

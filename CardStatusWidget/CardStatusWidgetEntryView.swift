@@ -1,64 +1,53 @@
-import SwiftUI
-import WidgetKit
+import Foundation
+import SwiftSoup
 
-struct CardStatusWidgetEntryView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
-    var entry: CardProvider.Entry
-
-    var body: some View {
-        switch family {
-        case .systemSmall:
-            Text("Свободно: \(entry.availableCount)")
-                .font(.system(size: 16))
-                .padding()
-                .containerBackground(for: .widget) {
-                    Color(.systemBackground)
-                }
-        case .systemMedium:
-            VStack {
-                Text("Свободно: \(entry.availableCount) карточек")
-                    .font(.system(size: 20))
-                Text("Обновлено: \(entry.date, style: .time)")
-                    .font(.system(size: 14))
-                    .foregroundColor(.gray)
-            }
-            .padding()
-            .containerBackground(for: .widget) {
-                Color(.systemBackground)
-            }
-        case .systemLarge:
-            VStack {
-                Text("Свободно: \(entry.availableCount) карточек")
-                    .font(.system(size: 24))
-                Text("Последнее обновление: \(entry.date, style: .time)")
-                    .font(.system(size: 16))
-                    .foregroundColor(.gray)
-            }
-            .padding()
-            .containerBackground(for: .widget) {
-                Color(.systemBackground)
-            }
-        @unknown default:
-            Text("Свободно: \(entry.availableCount)")
-                .containerBackground(for: .widget) {
-                    Color(.systemBackground)
-                }
-        }
-    }
+struct Card: Identifiable {
+    let id: Int
+    let isAvailable: Bool
+    let price: Int
 }
 
-struct CardStatusWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            CardStatusWidgetEntryView(entry: CardEntry(date: Date(), availableCount: 5))
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-            CardStatusWidgetEntryView(entry: CardEntry(date: Date(), availableCount: 10))
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-            
-            CardStatusWidgetEntryView(entry: CardEntry(date: Date(), availableCount: 20))
-                .previewContext(WidgetPreviewContext(family: .systemLarge))
+class NetworkManager {
+    static func fetchData(completion: @escaping ([Card]) -> Void) {
+        guard let url = URL(string: "https://cabinet.unimetriq.com/client/7ed6b58dc200779aae315c2eef5a6d5d") else {
+            print("Invalid URL")
+            return
         }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Failed to load data: \(error.localizedDescription)")
+                return
+            }
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+
+            DispatchQueue.global(qos: .userInitiated).async {
+                do {
+                    let html = String(data: data, encoding: .utf8) ?? ""
+                    let document = try SwiftSoup.parse(html)
+
+                    let cardElements = try document.select("div.childItem")
+                    let fetchedCards: [Card] = try cardElements.enumerated().compactMap { (index, element) -> Card? in
+                        let statusText = try element.select("div.p-2.text-success > div.text-center").text()
+                        let isAvailable = statusText == "Свободно"
+
+                        let priceText = try element.select("span.withTooltip").text()
+                        let price = Int(priceText.replacingOccurrences(of: "₽", with: "").trimmingCharacters(in: .whitespaces)) ?? 0
+
+                        return Card(id: index + 1, isAvailable: isAvailable, price: price)
+                    }
+
+                    DispatchQueue.main.async {
+                        completion(fetchedCards)
+                    }
+                } catch {
+                    print("Error parsing HTML: \(error.localizedDescription)")
+                }
+            }
+        }.resume()
     }
 }
 
