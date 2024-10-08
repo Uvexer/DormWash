@@ -19,7 +19,7 @@ struct TabBarView: View {
                     stopFetchingData()
                 }
 
-            OrdersTabView(cards: $cards)
+            OrdersTabView()
                 .tabItem {
                     Label("Заказы", systemImage: "star")
                 }
