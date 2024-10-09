@@ -3,23 +3,36 @@ import SwiftUI
 struct SplashView: View {
     @Binding var isDataLoaded: Bool
     @Binding var cards: [Card]
+    @State private var fadeIn = false
+    @State private var scaleEffect = 0.8
 
     var body: some View {
         VStack {
             Image("forsplash")
-                //.font(.largeTitle)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .opacity(fadeIn ? 1 : 0)
+                .scaleEffect(scaleEffect)
                 .onAppear {
-                  
+                    withAnimation(.easeIn(duration: 1.0)) {
+                        fadeIn = true
+                        scaleEffect = 1.0
+                    }
+                    
                     NetworkManager.fetchData { fetchedCards in
                         self.cards = fetchedCards
                         saveCardsToUserDefaults(fetchedCards)
                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.isDataLoaded = true
+                            withAnimation(.easeOut(duration: 0.5)) {
+                                self.isDataLoaded = true
+                            }
                         }
                     }
                 }
         }
+        .background(Color.white)
     }
     
     func saveCardsToUserDefaults(_ cards: [Card]) {
