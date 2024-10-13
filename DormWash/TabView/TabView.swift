@@ -5,29 +5,75 @@ struct TabBarView: View {
     @Binding var cards: [Card]
     @State private var selectedCard: Card?
     @State private var timer: Timer?
+    @State private var selectedTab: Int = 0
 
     var body: some View {
-        TabView {
-            MachinesTabView(selectedCard: $selectedCard, cards: $cards)
-                .tabItem {
-                    Label("машинки", systemImage: "washer")
+        ZStack {
+           
+            switch selectedTab {
+            case 0:
+                MachinesTabView(selectedCard: $selectedCard, cards: $cards)
+                    .onAppear { startFetchingData() }
+                    .onDisappear { stopFetchingData() }
+            case 1:
+                OrdersTabView()
+            case 2:
+                SettingsTabView()
+            default:
+                MachinesTabView(selectedCard: $selectedCard, cards: $cards)
+            }
+            
+           
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    
+                   
+                    Button(action: {
+                        selectedTab = 0
+                    }) {
+                        VStack {
+                            Image(systemName: "washer")
+                           
+                        }
+                        .padding()
+                        .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                    }
+                    Spacer()
+                    
+                   
+                    Button(action: {
+                        selectedTab = 1
+                    }) {
+                        VStack {
+                            Image(systemName: "star")
+                            
+                        }
+                        .padding()
+                        .foregroundColor(selectedTab == 1 ? .blue : .gray)
+                    }
+                    Spacer()
+                    
+                   
+                    Button(action: {
+                        selectedTab = 2
+                    }) {
+                        VStack {
+                            Image(systemName: "gear")
+                           
+                        }
+                        .padding()
+                        .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                    }
+                    Spacer()
                 }
-                .onAppear {
-                    startFetchingData() 
-                }
-                .onDisappear {
-                    stopFetchingData()
-                }
-
-            OrdersTabView()
-                .tabItem {
-                    Label("Заказы", systemImage: "star")
-                }
-
-            SettingsTabView()
-                .tabItem {
-                    Label("Настройки", systemImage: "gear")
-                }
+                .frame(width: 250, height: 60)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(radius: 10)
+                .padding(.horizontal)
+            }
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
