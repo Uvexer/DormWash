@@ -33,7 +33,7 @@ struct OrdersTabView: View {
                     .onDelete(perform: deleteOrder)
                 }
             }
-            .navigationBarTitle("Заказы")
+            .navigationBarTitle("Поставь таймер")
             .navigationBarItems(trailing: Button(action: {
                 showMachineSelection.toggle()
             }) {

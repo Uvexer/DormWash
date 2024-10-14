@@ -9,7 +9,6 @@ struct TabBarView: View {
 
     var body: some View {
         ZStack {
-           
             switch selectedTab {
             case 0:
                 MachinesTabView(selectedCard: $selectedCard, cards: $cards)
@@ -22,46 +21,48 @@ struct TabBarView: View {
             default:
                 MachinesTabView(selectedCard: $selectedCard, cards: $cards)
             }
-            
-           
+
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
                     
-                   
                     Button(action: {
-                        selectedTab = 0
+                        withAnimation(.easeInOut) {
+                            selectedTab = 0
+                        }
                     }) {
                         VStack {
                             Image(systemName: "washer")
-                           
+                                .font(.system(size: 24))
                         }
                         .padding()
                         .foregroundColor(selectedTab == 0 ? .blue : .gray)
                     }
                     Spacer()
-                    
-                   
+
                     Button(action: {
-                        selectedTab = 1
+                        withAnimation(.easeInOut) {
+                            selectedTab = 1
+                        }
                     }) {
                         VStack {
                             Image(systemName: "star")
-                            
+                                .font(.system(size: 24))
                         }
                         .padding()
                         .foregroundColor(selectedTab == 1 ? .blue : .gray)
                     }
                     Spacer()
-                    
-                   
+
                     Button(action: {
-                        selectedTab = 2
+                        withAnimation(.easeInOut) {
+                            selectedTab = 2
+                        }
                     }) {
                         VStack {
                             Image(systemName: "gear")
-                           
+                                .font(.system(size: 24))
                         }
                         .padding()
                         .foregroundColor(selectedTab == 2 ? .blue : .gray)
