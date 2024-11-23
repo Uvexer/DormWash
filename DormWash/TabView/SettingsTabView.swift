@@ -4,45 +4,43 @@ import MessageUI
 struct SettingsTabView: View {
     @State private var isShowingMailView = false
     @State private var isMailViewAvailable = MFMailComposeViewController.canSendMail()
-    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
 
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: isDarkMode ? [.black, .gray] : [.blue, .purple]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-            
-            List {
-                Section {
-                    Button(action: {
-                        if isMailViewAvailable {
-                            isShowingMailView.toggle()
-                        }
-                    }) {
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                            Text("Написать разработчику")
-                        }
-                        .foregroundColor(.white)
-                    }
-                    .listRowBackground(Color.clear)
-                }
+            Color.clear
+                .animatedGradientBackground()
 
-                Section(header: Text("Настройки темы").foregroundColor(.white)) {
-                    Toggle(isOn: $isDarkMode) {
-                        Text(isDarkMode ? "Тёмная тема" : "Светлая тема")
+            VStack {
+                Text("Настройки")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.top, 50)
+
+                List {
+                    Section {
+                        Button(action: {
+                            if isMailViewAvailable {
+                                isShowingMailView.toggle()
+                            }
+                        }) {
+                            HStack {
+                                Image(systemName: "envelope.fill")
+                                Text("Написать разработчику")
+                            }
                             .foregroundColor(.white)
+                        }
+                        .listRowBackground(Color.clear)
                     }
-                    .listRowBackground(Color.clear)
                 }
+                .listStyle(InsetGroupedListStyle())
+                .scrollContentBackground(.hidden)
             }
-            .listStyle(InsetGroupedListStyle())
-            .background(Color.clear)
         }
+        .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $isShowingMailView) {
             MailView(recipients: ["m2112619@edu.misis.ru"], subject: "Обратная связь", messageBody: "")
         }
-        .preferredColorScheme(isDarkMode ? .dark : .light) 
     }
 }
-
 
