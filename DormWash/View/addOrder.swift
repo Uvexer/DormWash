@@ -1,5 +1,4 @@
 import CoreData
-import CoreData
 
 extension MachineSelectionView {
     func addOrder(id: Int64, isAvailable: Bool, price: Int64, in context: NSManagedObjectContext) {

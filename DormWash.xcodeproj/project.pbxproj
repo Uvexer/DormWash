@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,8 @@
 		A80F79C42C76897700E58A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C32C76897700E58A79 /* Assets.xcassets */; };
 		A80F79C72C76897700E58A79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C62C76897700E58A79 /* Preview Assets.xcassets */; };
 		A80F79D02C768B8900E58A79 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = A80F79CF2C768B8900E58A79 /* SwiftSoup */; };
-		A80F79D22C76919A00E58A79 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D12C76919A00E58A79 /* SplashView.swift */; };
-		A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D32C76956A00E58A79 /* CardsNetwork.swift */; };
-		A80F79D62C76957D00E58A79 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79D52C76957D00E58A79 /* Cards.swift */; };
 		A815F86D2C7D219100785CE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79C12C76897400E58A79 /* ContentView.swift */; };
 		A853D50B2C798C7D008E5C78 /* DormWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */; };
-		A853D50F2C798EB4008E5C78 /* addOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D50E2C798EB4008E5C78 /* addOrder.swift */; };
-		A853D5112C798F4E008E5C78 /* MachineSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D5102C798F4E008E5C78 /* MachineSelectionView.swift */; };
 		A853D5132C79967C008E5C78 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D5122C79967C008E5C78 /* PersistenceController.swift */; };
 		A88031382C7E4F1F00E10E01 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8422C7D160300785CE6 /* WidgetKit.framework */; };
 		A88031392C7E4F1F00E10E01 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8442C7D160300785CE6 /* SwiftUI.framework */; };
@@ -26,14 +21,6 @@
 		A88031422C7E4F2300E10E01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88031412C7E4F2300E10E01 /* Assets.xcassets */; };
 		A88031462C7E4F2300E10E01 /* CardStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A88031372C7E4F1F00E10E01 /* CardStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A880314B2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A880314A2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift */; };
-		A8890F272C94BDDC00695AC7 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8890F262C94BDDC00695AC7 /* Gradient.swift */; };
-		A89267922CEE6B7B00F3A9FF /* SpinningDrumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89267912CEE6B7B00F3A9FF /* SpinningDrumView.swift */; };
-		A89267942CEE749600F3A9FF /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89267932CEE749600F3A9FF /* MailView.swift */; };
-		A8958B922C772123008ADD9F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B912C772123008ADD9F /* CardView.swift */; };
-		A8958B942C77716C008ADD9F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B932C77716C008ADD9F /* TabView.swift */; };
-		A8958B962C7776A5008ADD9F /* MachinesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B952C7776A5008ADD9F /* MachinesTabView.swift */; };
-		A8958B982C7776B6008ADD9F /* OrdersTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B972C7776B6008ADD9F /* OrdersTabView.swift */; };
-		A8958B9A2C7776CF008ADD9F /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958B992C7776CF008ADD9F /* SettingsTabView.swift */; };
 		A8BC765D2CB45568004DC661 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = A8BC765C2CB45568004DC661 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
@@ -67,14 +54,9 @@
 		A80F79C12C76897400E58A79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A80F79C32C76897700E58A79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A80F79C62C76897700E58A79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A80F79D12C76919A00E58A79 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		A80F79D32C76956A00E58A79 /* CardsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsNetwork.swift; sourceTree = "<group>"; };
-		A80F79D52C76957D00E58A79 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		A815F8422C7D160300785CE6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A815F8442C7D160300785CE6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		A853D50A2C798C7D008E5C78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		A853D50E2C798EB4008E5C78 /* addOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addOrder.swift; sourceTree = "<group>"; };
-		A853D5102C798F4E008E5C78 /* MachineSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineSelectionView.swift; sourceTree = "<group>"; };
 		A853D5122C79967C008E5C78 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		A88031372C7E4F1F00E10E01 /* CardStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CardStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A880313B2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusWidgetBundle.swift; sourceTree = "<group>"; };
@@ -83,16 +65,14 @@
 		A88031432C7E4F2300E10E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A880314A2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusWidgetEntryView.swift; sourceTree = "<group>"; };
 		A880314E2C7E556200E10E01 /* CardStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
-		A8890F262C94BDDC00695AC7 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
-		A89267912CEE6B7B00F3A9FF /* SpinningDrumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningDrumView.swift; sourceTree = "<group>"; };
-		A89267932CEE749600F3A9FF /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
-		A8958B912C772123008ADD9F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		A8958B932C77716C008ADD9F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
-		A8958B952C7776A5008ADD9F /* MachinesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesTabView.swift; sourceTree = "<group>"; };
-		A8958B972C7776B6008ADD9F /* OrdersTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTabView.swift; sourceTree = "<group>"; };
-		A8958B992C7776CF008ADD9F /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 		A8DAC7B02CA1F392005C95C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		283497362D1539A60019D233 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
+		283497372D1539BF0019D233 /* ViewModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModel; sourceTree = "<group>"; };
+		283497382D1539D00019D233 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A80F79B92C76897400E58A79 /* Frameworks */ = {
@@ -139,18 +119,16 @@
 		A80F79BE2C76897400E58A79 /* DormWash */ = {
 			isa = PBXGroup;
 			children = (
+				283497382D1539D00019D233 /* View */,
+				283497372D1539BF0019D233 /* ViewModel */,
+				283497362D1539A60019D233 /* Model */,
 				A8DAC7B02CA1F392005C95C6 /* Info.plist */,
-				A8958B9B2C7776FC008ADD9F /* TabView */,
-				A80F79D52C76957D00E58A79 /* Cards.swift */,
-				A80F79D12C76919A00E58A79 /* SplashView.swift */,
-				A80F79BF2C76897400E58A79 /* DormWashApp.swift */,
 				A80F79C12C76897400E58A79 /* ContentView.swift */,
 				A80F79C32C76897700E58A79 /* Assets.xcassets */,
 				A80F79C52C76897700E58A79 /* Preview Content */,
-				A80F79D32C76956A00E58A79 /* CardsNetwork.swift */,
-				A8958B912C772123008ADD9F /* CardView.swift */,
-				A8890F262C94BDDC00695AC7 /* Gradient.swift */,
-				A89267912CEE6B7B00F3A9FF /* SpinningDrumView.swift */,
+				A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */,
+				A80F79BF2C76897400E58A79 /* DormWashApp.swift */,
+				A853D5122C79967C008E5C78 /* PersistenceController.swift */,
 			);
 			path = DormWash;
 			sourceTree = "<group>";
@@ -184,30 +162,6 @@
 			path = CardStatusWidget;
 			sourceTree = "<group>";
 		};
-		A89267972CEE758400F3A9FF /* Orders */ = {
-			isa = PBXGroup;
-			children = (
-				A8958B972C7776B6008ADD9F /* OrdersTabView.swift */,
-			);
-			path = Orders;
-			sourceTree = "<group>";
-		};
-		A8958B9B2C7776FC008ADD9F /* TabView */ = {
-			isa = PBXGroup;
-			children = (
-				A89267972CEE758400F3A9FF /* Orders */,
-				A8958B932C77716C008ADD9F /* TabView.swift */,
-				A8958B952C7776A5008ADD9F /* MachinesTabView.swift */,
-				A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */,
-				A8958B992C7776CF008ADD9F /* SettingsTabView.swift */,
-				A853D50E2C798EB4008E5C78 /* addOrder.swift */,
-				A853D5102C798F4E008E5C78 /* MachineSelectionView.swift */,
-				A853D5122C79967C008E5C78 /* PersistenceController.swift */,
-				A89267932CEE749600F3A9FF /* MailView.swift */,
-			);
-			path = TabView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,6 +178,11 @@
 			);
 			dependencies = (
 				A88031452C7E4F2300E10E01 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				283497362D1539A60019D233 /* Model */,
+				283497372D1539BF0019D233 /* ViewModel */,
+				283497382D1539D00019D233 /* View */,
 			);
 			name = DormWash;
 			packageProductDependencies = (
@@ -315,23 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A80F79D62C76957D00E58A79 /* Cards.swift in Sources */,
 				A853D5132C79967C008E5C78 /* PersistenceController.swift in Sources */,
 				A815F86D2C7D219100785CE6 /* ContentView.swift in Sources */,
-				A80F79D42C76956A00E58A79 /* CardsNetwork.swift in Sources */,
-				A8958B962C7776A5008ADD9F /* MachinesTabView.swift in Sources */,
-				A8890F272C94BDDC00695AC7 /* Gradient.swift in Sources */,
-				A89267942CEE749600F3A9FF /* MailView.swift in Sources */,
-				A8958B9A2C7776CF008ADD9F /* SettingsTabView.swift in Sources */,
 				A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */,
-				A853D50F2C798EB4008E5C78 /* addOrder.swift in Sources */,
-				A8958B942C77716C008ADD9F /* TabView.swift in Sources */,
-				A89267922CEE6B7B00F3A9FF /* SpinningDrumView.swift in Sources */,
-				A8958B982C7776B6008ADD9F /* OrdersTabView.swift in Sources */,
-				A8958B922C772123008ADD9F /* CardView.swift in Sources */,
-				A853D5112C798F4E008E5C78 /* MachineSelectionView.swift in Sources */,
 				A853D50B2C798C7D008E5C78 /* DormWash.xcdatamodeld in Sources */,
-				A80F79D22C76919A00E58A79 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,8 +616,7 @@
 				A853D50A2C798C7D008E5C78 /* Model.xcdatamodel */,
 			);
 			currentVersion = A853D50A2C798C7D008E5C78 /* Model.xcdatamodel */;
-			name = DormWash.xcdatamodeld;
-			path = ../DormWash.xcdatamodeld;
+			path = DormWash.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

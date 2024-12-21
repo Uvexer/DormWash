@@ -1,35 +1,37 @@
 import SwiftUI
+import CoreData
 
 struct TabBarView: View {
     @Environment(\.scenePhase) var scenePhase
-    @Binding var cards: [Card]
+    @StateObject private var viewModel: TabBarViewModel
     @State private var selectedCard: Card?
-    @State private var timer: Timer?
-    @State private var selectedTab: Int = 0
+
+    init(cards: [Card] = [], viewContext: NSManagedObjectContext) {
+        _viewModel = StateObject(wrappedValue: TabBarViewModel(cards: cards, viewContext: viewContext))
+    }
 
     var body: some View {
         ZStack {
-            switch selectedTab {
+            switch viewModel.selectedTab {
             case 0:
-                MachinesTabView(selectedCard: $selectedCard, cards: $cards)
-                    .onAppear { startFetchingData() }
-                    .onDisappear { stopFetchingData() }
+                MachinesTabView(selectedCard: $selectedCard, cards: $viewModel.cards)
+                    .onAppear { viewModel.startFetchingData() }
+                    .onDisappear { viewModel.stopFetchingData() }
             case 1:
-                OrdersTabView()
+                OrdersTabView(viewContext: viewModel.viewContext)
             case 2:
                 SettingsTabView()
             default:
-                MachinesTabView(selectedCard: $selectedCard, cards: $cards)
+                MachinesTabView(selectedCard: $selectedCard, cards: $viewModel.cards)
             }
 
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
-                    
                     Button(action: {
                         withAnimation(.easeInOut) {
-                            selectedTab = 0
+                            viewModel.selectedTab = 0
                         }
                     }) {
                         VStack {
@@ -37,13 +39,12 @@ struct TabBarView: View {
                                 .font(.system(size: 24))
                         }
                         .padding()
-                        .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                        .foregroundColor(viewModel.selectedTab == 0 ? .blue : .gray)
                     }
                     Spacer()
-
                     Button(action: {
                         withAnimation(.easeInOut) {
-                            selectedTab = 1
+                            viewModel.selectedTab = 1
                         }
                     }) {
                         VStack {
@@ -51,13 +52,12 @@ struct TabBarView: View {
                                 .font(.system(size: 24))
                         }
                         .padding()
-                        .foregroundColor(selectedTab == 1 ? .blue : .gray)
+                        .foregroundColor(viewModel.selectedTab == 1 ? .blue : .gray)
                     }
                     Spacer()
-
                     Button(action: {
                         withAnimation(.easeInOut) {
-                            selectedTab = 2
+                            viewModel.selectedTab = 2
                         }
                     }) {
                         VStack {
@@ -65,7 +65,7 @@ struct TabBarView: View {
                                 .font(.system(size: 24))
                         }
                         .padding()
-                        .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                        .foregroundColor(viewModel.selectedTab == 2 ? .blue : .gray)
                     }
                     Spacer()
                 }
@@ -78,29 +78,11 @@ struct TabBarView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                startFetchingData()
+                viewModel.startFetchingData()
             } else if newPhase == .background {
-                stopFetchingData()
+                viewModel.stopFetchingData()
             }
         }
-    }
-
-    func startFetchingData() {
-        timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
-            NetworkManager.fetchData { fetchedCards in
-                self.cards = fetchedCards
-                saveCardsToUserDefaults(fetchedCards)
-            }
-        }
-    }
-
-    func stopFetchingData() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
-    func saveCardsToUserDefaults(_ cards: [Card]) {
-        let cardsData = cards.map { ["id": "\($0.id)", "isAvailable": $0.isAvailable ? "true" : "false", "price": "\($0.price)"] }
-        UserDefaults.standard.set(cardsData, forKey: "cachedCards")
     }
 }
+
