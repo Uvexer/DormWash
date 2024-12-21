@@ -107,4 +107,10 @@ class OrdersViewModel: ObservableObject {
         let futureDate = calendar.date(byAdding: components, to: currentDate) ?? currentDate
         return futureDate.timeIntervalSince(currentDate)
     }
+
+    func orderTimeString(for order: OrderModel) -> String {
+        let hour = String(format: "%02d", order.hour)
+        let minute = String(format: "%02d", order.minute)
+        return "\(hour):\(minute)"
+    }
 }

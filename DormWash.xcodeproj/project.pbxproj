@@ -122,13 +122,13 @@
 				283497382D1539D00019D233 /* View */,
 				283497372D1539BF0019D233 /* ViewModel */,
 				283497362D1539A60019D233 /* Model */,
-				A8DAC7B02CA1F392005C95C6 /* Info.plist */,
 				A80F79C12C76897400E58A79 /* ContentView.swift */,
+				A853D5122C79967C008E5C78 /* PersistenceController.swift */,
+				A80F79BF2C76897400E58A79 /* DormWashApp.swift */,
+				A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */,
+				A8DAC7B02CA1F392005C95C6 /* Info.plist */,
 				A80F79C32C76897700E58A79 /* Assets.xcassets */,
 				A80F79C52C76897700E58A79 /* Preview Content */,
-				A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */,
-				A80F79BF2C76897400E58A79 /* DormWashApp.swift */,
-				A853D5122C79967C008E5C78 /* PersistenceController.swift */,
 			);
 			path = DormWash;
 			sourceTree = "<group>";
