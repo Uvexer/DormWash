@@ -7,14 +7,13 @@ struct OrderModel: Identifiable, Hashable {
     var minute: Int
     var isAvailable: Bool
     var price: Int64
-    
+
     init(from order: Order) {
-        self.id = order.id
-        self.machine = order.machine ?? ""
-        self.hour = Int(order.hour)
-        self.minute = Int(order.minute)
-        self.isAvailable = order.isAvailable
-        self.price = order.price
+        id = order.id
+        machine = order.machine ?? ""
+        hour = Int(order.hour)
+        minute = Int(order.minute)
+        isAvailable = order.isAvailable
+        price = order.price
     }
 }
-

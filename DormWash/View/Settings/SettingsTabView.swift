@@ -1,5 +1,5 @@
-import SwiftUI
 import MessageUI
+import SwiftUI
 
 struct SettingsTabView: View {
     @State private var isShowingMailView = false
@@ -43,4 +43,3 @@ struct SettingsTabView: View {
         }
     }
 }
-

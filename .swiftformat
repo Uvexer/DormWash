@@ -1,0 +1,6 @@
+--indent 4
+--linebreaks lf
+--allman false
+--wraparguments beforefirst
+--wrapcollections beforefirst
+--stripunusedargs closure-only

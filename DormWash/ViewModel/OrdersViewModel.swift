@@ -1,7 +1,7 @@
+import Combine
+import CoreData
 import Foundation
 import UserNotifications
-import CoreData
-import Combine
 
 class OrdersViewModel: ObservableObject {
     @Published var orders: [OrderModel] = []
@@ -11,9 +11,9 @@ class OrdersViewModel: ObservableObject {
     @Published var showMachineSelection = false
 
     let machines = ["Машинка 1", "Машинка 2", "Машинка 3", "Машинка 4", "Машинка 5", "Машинка 6", "Машинка 7", "Машинка 8"]
-    let hours = Array(0..<24)
-    let minutes = Array(0..<60)
-    
+    let hours = Array(0 ..< 24)
+    let minutes = Array(0 ..< 60)
+
     private let viewContext: NSManagedObjectContext
 
     init(viewContext: NSManagedObjectContext) {
@@ -21,17 +21,15 @@ class OrdersViewModel: ObservableObject {
         fetchOrders()
     }
 
-   
     func fetchOrders() {
         let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
         do {
             let ordersFetched = try viewContext.fetch(fetchRequest)
-            self.orders = ordersFetched.map { OrderModel(from: $0) }
+            orders = ordersFetched.map { OrderModel(from: $0) }
         } catch {
             print("Ошибка при получении заказов: \(error.localizedDescription)")
         }
     }
-
 
     func addOrder() {
         let newOrder = Order(context: viewContext)
@@ -41,7 +39,7 @@ class OrdersViewModel: ObservableObject {
         newOrder.minute = Int16(selectedMinute)
         newOrder.isAvailable = true
         newOrder.price = 100
-        
+
         do {
             try viewContext.save()
             fetchOrders()
@@ -51,7 +49,6 @@ class OrdersViewModel: ObservableObject {
         }
     }
 
-   
     func deleteOrder(at offsets: IndexSet) {
         offsets.map { orders[$0] }.forEach { order in
             let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
@@ -69,9 +66,8 @@ class OrdersViewModel: ObservableObject {
         }
     }
 
-    
     func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
             if granted {
                 print("Разрешение на уведомления получено")
             } else {
@@ -90,19 +86,18 @@ class OrdersViewModel: ObservableObject {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
+            if let error {
                 print("Ошибка планирования уведомления: \(error.localizedDescription)")
             }
         }
     }
 
-  
     private func calculateTimeInterval() -> TimeInterval {
         let currentDate = Date()
         var components = DateComponents()
         components.hour = selectedHour
         components.minute = selectedMinute
-        
+
         let calendar = Calendar.current
         let futureDate = calendar.date(byAdding: components, to: currentDate) ?? currentDate
         return futureDate.timeIntervalSince(currentDate)

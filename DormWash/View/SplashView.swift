@@ -11,37 +11,31 @@ struct SplashView: View {
             Image(systemName: "washer.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 200,height: 200)
+                .frame(width: 200, height: 200)
                 .opacity(fadeIn ? 1 : 0)
                 .scaleEffect(scaleEffect)
-                              
-                                 
                 .onAppear {
                     withAnimation(.easeIn(duration: 1.0)) {
                         fadeIn = true
                         scaleEffect = 1.0
                     }
-                    
+
                     NetworkManager.fetchData { fetchedCards in
-                        self.cards = fetchedCards
+                        cards = fetchedCards
                         saveCardsToUserDefaults(fetchedCards)
-                       
+
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             withAnimation(.easeOut(duration: 0.5)) {
-                                self.isDataLoaded = true
-                           }
+                                isDataLoaded = true
+                            }
                         }
                     }
                 }
-               
         }
-       
     }
-        
-    
+
     func saveCardsToUserDefaults(_ cards: [Card]) {
         let cardsData = cards.map { ["id": "\($0.id)", "isAvailable": $0.isAvailable ? "true" : "false", "price": "\($0.price)"] }
         UserDefaults.standard.set(cardsData, forKey: "cachedCards")
     }
-    
 }

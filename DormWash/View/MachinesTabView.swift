@@ -6,9 +6,9 @@ struct MachinesTabView: View {
 
     let columns = [
         GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible()),
     ]
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -23,6 +23,6 @@ struct MachinesTabView: View {
                 .padding()
             }
         }
-        .animatedGradientBackground() 
+        .animatedGradientBackground()
     }
 }

@@ -1,23 +1,23 @@
-import Foundation
 import CoreData
+import Foundation
 
 class TabBarViewModel: ObservableObject {
     @Published var cards: [Card] = []
     @Published var selectedTab: Int = 0
     private var timer: Timer?
-    let viewContext: NSManagedObjectContext 
-    
+    let viewContext: NSManagedObjectContext
+
     init(cards: [Card] = [], viewContext: NSManagedObjectContext) {
         self.cards = cards
         self.viewContext = viewContext
     }
-    
+
     func startFetchingData() {
         timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
             self.fetchData()
         }
     }
-    
+
     func stopFetchingData() {
         timer?.invalidate()
         timer = nil
@@ -37,4 +37,3 @@ class TabBarViewModel: ObservableObject {
         UserDefaults.standard.set(cardsData, forKey: "cachedCards")
     }
 }
-

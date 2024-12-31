@@ -10,14 +10,14 @@ struct PersistenceController {
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
-        container.loadPersistentStores { description, error in
-            if let error = error {
+        container.loadPersistentStores { _, error in
+            if let error {
                 fatalError("Ошибка загрузки Core Data: \(error.localizedDescription)")
             }
         }
     }
 
     var viewContext: NSManagedObjectContext {
-        return container.viewContext
+        container.viewContext
     }
 }

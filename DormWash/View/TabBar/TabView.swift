@@ -1,5 +1,5 @@
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct TabBarView: View {
     @Environment(\.scenePhase) var scenePhase
@@ -13,7 +13,7 @@ struct TabBarView: View {
     var body: some View {
         ZStack {
             MainContentView(viewModel: viewModel, selectedCard: $selectedCard)
-            
+
             VStack {
                 Spacer()
                 TabBar(selectedTab: $viewModel.selectedTab)
@@ -32,4 +32,3 @@ struct TabBarView: View {
         }
     }
 }
-

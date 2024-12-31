@@ -4,7 +4,7 @@ struct AnimatedGradientBackground: ViewModifier {
     @State private var animateGradient: Bool = false
     private let startColor: Color = .blue
     private let endColor: Color = .green
-    
+
     func body(content: Content) -> some View {
         content
             .background(
@@ -19,8 +19,9 @@ struct AnimatedGradientBackground: ViewModifier {
             )
     }
 }
+
 extension View {
     func animatedGradientBackground() -> some View {
-        self.modifier(AnimatedGradientBackground())
+        modifier(AnimatedGradientBackground())
     }
 }

@@ -20,4 +20,3 @@ struct CardView: View {
         .overlay(PriceOverlayView(price: card.price, isAvailable: card.isAvailable), alignment: .topTrailing)
     }
 }
-

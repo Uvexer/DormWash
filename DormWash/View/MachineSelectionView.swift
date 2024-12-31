@@ -1,5 +1,5 @@
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct MachineSelectionView: View {
     @Binding var cards: [Card]
@@ -10,9 +10,9 @@ struct MachineSelectionView: View {
     var body: some View {
         VStack {
             MachinesTabView(selectedCard: $selectedCard, cards: $cards)
-            
+
             Button(action: {
-                if let selectedCard = selectedCard {
+                if let selectedCard {
                     addOrder(id: Int64(selectedCard.id), isAvailable: selectedCard.isAvailable, price: Int64(selectedCard.price), in: viewContext)
                     presentationMode.wrappedValue.dismiss()
                 }
@@ -28,4 +28,3 @@ struct MachineSelectionView: View {
         }
     }
 }
-

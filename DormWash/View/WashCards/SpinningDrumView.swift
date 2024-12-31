@@ -2,10 +2,10 @@ import SwiftUI
 
 struct SpinningDrumView: View {
     @State private var isRotating = false
-    
+
     var body: some View {
         ZStack {
-            ForEach(0..<8) { i in
+            ForEach(0 ..< 8) { i in
                 Rectangle()
                     .fill(Color.red.opacity(0.7))
                     .frame(width: 5, height: 15)
@@ -20,4 +20,3 @@ struct SpinningDrumView: View {
         }
     }
 }
-

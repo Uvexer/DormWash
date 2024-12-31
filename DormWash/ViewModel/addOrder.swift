@@ -9,7 +9,7 @@ extension MachineSelectionView {
         newOrder.id = id
         newOrder.isAvailable = isAvailable
         newOrder.price = price
-        
+
         print("Context: \(context)")
         print("Order entity: \(newOrder)")
         do {

@@ -14,12 +14,12 @@ class NetworkManager {
             return
         }
 
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error {
                 print("Failed to load data: \(error.localizedDescription)")
                 return
             }
-            guard let data = data else {
+            guard let data else {
                 print("No data received")
                 return
             }
@@ -30,7 +30,7 @@ class NetworkManager {
                     let document = try SwiftSoup.parse(html)
 
                     let cardElements = try document.select("div.childItem")
-                    let fetchedCards: [Card] = try cardElements.enumerated().compactMap { (index, element) -> Card? in
+                    let fetchedCards: [Card] = try cardElements.enumerated().compactMap { index, element -> Card? in
                         let statusText = try element.select("div.p-2.text-success > div.text-center").text()
                         let isAvailable = statusText == "Свободно"
 
@@ -50,4 +50,3 @@ class NetworkManager {
         }.resume()
     }
 }
-

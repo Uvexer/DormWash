@@ -1,5 +1,5 @@
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct OrdersTabView: View {
     @StateObject private var viewModel: OrdersViewModel
@@ -47,7 +47,7 @@ struct OrdersTabView: View {
                 VStack {
                     Text("Выбери машинку")
                         .font(.largeTitle)
-                    
+
                     Picker("Выберите машинку", selection: $viewModel.selectedMachine) {
                         ForEach(viewModel.machines, id: \.self) { machine in
                             Text(machine)
@@ -63,7 +63,7 @@ struct OrdersTabView: View {
                             }
                         }
                         .pickerStyle(WheelPickerStyle())
-                        
+
                         Picker("Минуты", selection: $viewModel.selectedMinute) {
                             ForEach(viewModel.minutes, id: \.self) { minute in
                                 Text("\(minute) мин")
@@ -99,4 +99,3 @@ struct OrdersTabView: View {
         return "\(hour):\(minute)"
     }
 }
-

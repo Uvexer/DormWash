@@ -1,6 +1,6 @@
-import WidgetKit
-import SwiftUI
 import Combine
+import SwiftUI
+import WidgetKit
 
 struct CardsWidgetEntry: TimelineEntry {
     let date: Date
@@ -12,17 +12,16 @@ struct CardsWidgetProvider: TimelineProvider {
         CardsWidgetEntry(date: Date(), availableCardsCount: 0)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (CardsWidgetEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (CardsWidgetEntry) -> Void) {
         let entry = CardsWidgetEntry(date: Date(), availableCardsCount: 0)
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<CardsWidgetEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<CardsWidgetEntry>) -> Void) {
         NetworkManager.fetchData { fetchedCards in
-            let availableCardsCount = fetchedCards.filter { $0.isAvailable }.count
+            let availableCardsCount = fetchedCards.filter(\.isAvailable).count
             let entry = CardsWidgetEntry(date: Date(), availableCardsCount: availableCardsCount)
 
-         
             let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
             let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
             completion(timeline)

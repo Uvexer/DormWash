@@ -1,5 +1,6 @@
 import SwiftUI
 import WidgetKit
+
 @main
 struct CardsWidget: Widget {
     let kind: String = "CardsWidget"
@@ -13,5 +14,3 @@ struct CardsWidget: Widget {
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
-
-

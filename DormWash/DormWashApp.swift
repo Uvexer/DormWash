@@ -1,5 +1,5 @@
-import SwiftUI
 import CoreData
+import SwiftUI
 import UIKit
 import UserNotifications
 
@@ -23,26 +23,23 @@ struct DormWashApp: App {
     }
 }
 
-
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
             if granted {
                 print("Уведомления разрешены")
             } else {
                 print("Уведомления запрещены")
             }
         }
-        
+
         UNUserNotificationCenter.current().delegate = self
-        
-       
+
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-        
+
         return true
     }
-    
+
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         NetworkManager.fetchData { fetchedCards in
             self.saveCardsToCoreData(fetchedCards)
@@ -50,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 
-   
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let aps = userInfo["aps"] as? [String: AnyObject], aps["content-available"] as? Int == 1 {
             NetworkManager.fetchData { fetchedCards in
@@ -60,11 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 
-   
     private func saveCardsToCoreData(_ cards: [Card]) {
         let context = PersistenceController.shared.container.viewContext
 
-       
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Card")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
@@ -73,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print("Ошибка при удалении старых данных: \(error.localizedDescription)")
         }
 
-       
         for card in cards {
             let newCard = Order(context: context)
             newCard.id = Int64(card.id)
@@ -81,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             newCard.price = Int64(card.price)
         }
 
-   
         do {
             try context.save()
         } catch {
@@ -89,4 +81,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 }
-
