@@ -5,22 +5,10 @@ struct TabBar: View {
 
     var body: some View {
         HStack {
-            Spacer()
-            TabBarButton(imageName: "washer", isSelected: selectedTab == 0) {
-                withAnimation(.easeInOut) {
-                    selectedTab = 0
-                }
-            }
-            Spacer()
-            TabBarButton(imageName: "star", isSelected: selectedTab == 1) {
-                withAnimation(.easeInOut) {
-                    selectedTab = 1
-                }
-            }
-            Spacer()
-            TabBarButton(imageName: "gear", isSelected: selectedTab == 2) {
-                withAnimation(.easeInOut) {
-                    selectedTab = 2
+            ForEach(Tab.allCases, id: \.rawValue) { tab in
+                Spacer()
+                TabBarButton(imageName: tab.imageName, isSelected: selectedTab == tab.rawValue) {
+                    selectedTab = tab.rawValue
                 }
             }
             Spacer()

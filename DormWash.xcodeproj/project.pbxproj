@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		289034692D256636007E6BF2 /* DormWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 289034682D256636007E6BF2 /* DormWash.xcdatamodeld */; };
+		2890346A2D256636007E6BF2 /* DormWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 289034682D256636007E6BF2 /* DormWash.xcdatamodeld */; };
 		A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79BF2C76897400E58A79 /* DormWashApp.swift */; };
 		A80F79C42C76897700E58A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C32C76897700E58A79 /* Assets.xcassets */; };
 		A80F79C72C76897700E58A79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C62C76897700E58A79 /* Preview Assets.xcassets */; };
 		A80F79D02C768B8900E58A79 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = A80F79CF2C768B8900E58A79 /* SwiftSoup */; };
 		A815F86D2C7D219100785CE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79C12C76897400E58A79 /* ContentView.swift */; };
-		A853D50B2C798C7D008E5C78 /* DormWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */; };
 		A853D5132C79967C008E5C78 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853D5122C79967C008E5C78 /* PersistenceController.swift */; };
 		A88031382C7E4F1F00E10E01 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8422C7D160300785CE6 /* WidgetKit.framework */; };
 		A88031392C7E4F1F00E10E01 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A815F8442C7D160300785CE6 /* SwiftUI.framework */; };
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2890346B2D25664A007E6BF2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A80F79BC2C76897400E58A79 /* DormWash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DormWash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80F79BF2C76897400E58A79 /* DormWashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormWashApp.swift; sourceTree = "<group>"; };
 		A80F79C12C76897400E58A79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,7 +58,6 @@
 		A80F79C62C76897700E58A79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A815F8422C7D160300785CE6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A815F8442C7D160300785CE6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		A853D50A2C798C7D008E5C78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A853D5122C79967C008E5C78 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		A88031372C7E4F1F00E10E01 /* CardStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CardStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A880313B2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatusWidgetBundle.swift; sourceTree = "<group>"; };
@@ -122,10 +123,10 @@
 				283497382D1539D00019D233 /* View */,
 				283497372D1539BF0019D233 /* ViewModel */,
 				283497362D1539A60019D233 /* Model */,
+				289034682D256636007E6BF2 /* DormWash.xcdatamodeld */,
 				A80F79C12C76897400E58A79 /* ContentView.swift */,
 				A853D5122C79967C008E5C78 /* PersistenceController.swift */,
 				A80F79BF2C76897400E58A79 /* DormWashApp.swift */,
-				A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */,
 				A8DAC7B02CA1F392005C95C6 /* Info.plist */,
 				A80F79C32C76897700E58A79 /* Assets.xcassets */,
 				A80F79C52C76897700E58A79 /* Preview Content */,
@@ -277,7 +278,7 @@
 				A853D5132C79967C008E5C78 /* PersistenceController.swift in Sources */,
 				A815F86D2C7D219100785CE6 /* ContentView.swift in Sources */,
 				A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */,
-				A853D50B2C798C7D008E5C78 /* DormWash.xcdatamodeld in Sources */,
+				289034692D256636007E6BF2 /* DormWash.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +288,7 @@
 			files = (
 				A880314B2C7E4FE600E10E01 /* CardStatusWidgetEntryView.swift in Sources */,
 				A880313C2C7E4F1F00E10E01 /* CardStatusWidgetBundle.swift in Sources */,
+				2890346A2D256636007E6BF2 /* DormWash.xcdatamodeld in Sources */,
 				A88031402C7E4F1F00E10E01 /* CardStatusWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,12 +612,12 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		A853D5092C798C7D008E5C78 /* DormWash.xcdatamodeld */ = {
+		289034682D256636007E6BF2 /* DormWash.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A853D50A2C798C7D008E5C78 /* Model.xcdatamodel */,
+				2890346B2D25664A007E6BF2 /* Model.xcdatamodel */,
 			);
-			currentVersion = A853D50A2C798C7D008E5C78 /* Model.xcdatamodel */;
+			currentVersion = 2890346B2D25664A007E6BF2 /* Model.xcdatamodel */;
 			path = DormWash.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

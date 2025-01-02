@@ -7,12 +7,12 @@ class OrdersViewModel: ObservableObject {
     @Published var orders: [OrderModel] = []
     @Published var selectedMachine: String = "Машинка 1"
     @Published var selectedHour: Int = 0
-    @Published var selectedMinute: Int = 0
+    @Published var selectedMinute: Int = 1
     @Published var showMachineSelection = false
 
     let machines = ["Машинка 1", "Машинка 2", "Машинка 3", "Машинка 4", "Машинка 5", "Машинка 6", "Машинка 7", "Машинка 8"]
-    let hours = Array(0 ..< 24)
-    let minutes = Array(0 ..< 60)
+    let hours = Array(0 ..< 23)
+    let minutes = Array(1 ..< 59)
 
     private let viewContext: NSManagedObjectContext
 
@@ -38,7 +38,7 @@ class OrdersViewModel: ObservableObject {
         newOrder.hour = Int16(selectedHour)
         newOrder.minute = Int16(selectedMinute)
         newOrder.isAvailable = true
-        newOrder.price = 100
+        newOrder.price = 169
 
         do {
             try viewContext.save()

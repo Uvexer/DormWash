@@ -3,8 +3,7 @@ import SwiftUI
 struct SplashView: View {
     @Binding var isDataLoaded: Bool
     @Binding var cards: [Card]
-    @State private var fadeIn = false
-    @State private var scaleEffect = 0.8
+    @State private var scale: CGFloat = 1.0
 
     var body: some View {
         VStack {
@@ -12,22 +11,17 @@ struct SplashView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200)
-                .opacity(fadeIn ? 1 : 0)
-                .scaleEffect(scaleEffect)
+                .scaleEffect(scale)
+                .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: scale)
                 .onAppear {
-                    withAnimation(.easeIn(duration: 1.0)) {
-                        fadeIn = true
-                        scaleEffect = 1.0
-                    }
+                    scale = 1.2
 
                     NetworkManager.fetchData { fetchedCards in
                         cards = fetchedCards
                         saveCardsToUserDefaults(fetchedCards)
 
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            withAnimation(.easeOut(duration: 0.5)) {
-                                isDataLoaded = true
-                            }
+                        DispatchQueue.main.async {
+                            isDataLoaded = true
                         }
                     }
                 }
