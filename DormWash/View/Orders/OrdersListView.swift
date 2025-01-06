@@ -5,18 +5,11 @@ struct OrdersListView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [.blue.opacity(0.3), .purple.opacity(0.5)]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-
             VStack {
                 HStack {
                     Spacer()
 
-                    Text("Мои заказы")
+                    Text("Поставь таймер")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -55,5 +48,6 @@ struct OrdersListView: View {
                 Spacer()
             }
         }
+        .animatedGradientBackground()
     }
 }

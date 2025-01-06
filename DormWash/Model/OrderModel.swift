@@ -7,6 +7,8 @@ struct OrderModel: Identifiable, Hashable {
     var minute: Int
     var isAvailable: Bool
     var price: Int64
+    var creationDate: Date
+    var identifier: String
 
     init(from order: Order) {
         id = order.id
@@ -15,5 +17,7 @@ struct OrderModel: Identifiable, Hashable {
         minute = Int(order.minute)
         isAvailable = order.isAvailable
         price = order.price
+        creationDate = order.creationDate ?? Date()
+        identifier = order.identifier ?? UUID().uuidString
     }
 }

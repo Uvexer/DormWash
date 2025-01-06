@@ -20,7 +20,9 @@ struct MachinesSelectionView: View {
 
             Button(action: {
                 viewModel.addOrder()
-                viewModel.scheduleNotification()
+                if let latestOrder = viewModel.orders.last {
+                    viewModel.scheduleNotification(for: latestOrder)
+                }
                 viewModel.showMachineSelection = false
             }) {
                 Text("Добавить")

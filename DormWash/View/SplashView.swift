@@ -7,10 +7,11 @@ struct SplashView: View {
 
     var body: some View {
         VStack {
-            Image(systemName: "washer.fill")
+            Spacer()
+            Image(systemName: "washer")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 200, height: 200)
+                .frame(width: 100, height: 100)
                 .scaleEffect(scale)
                 .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: scale)
                 .onAppear {
@@ -25,6 +26,7 @@ struct SplashView: View {
                         }
                     }
                 }
+            Spacer()
         }
     }
 

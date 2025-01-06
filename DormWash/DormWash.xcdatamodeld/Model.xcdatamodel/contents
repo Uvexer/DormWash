@@ -6,8 +6,10 @@
         <attribute name="subject" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Order" representedClassName="Order" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="hour" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="isAvailable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="machine" optional="YES" attributeType="String"/>
         <attribute name="minute" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>

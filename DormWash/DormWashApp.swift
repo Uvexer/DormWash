@@ -1,3 +1,4 @@
+import BackgroundTasks
 import CoreData
 import SwiftUI
 import UIKit
@@ -24,60 +25,102 @@ struct DormWashApp: App {
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
-            if granted {
-                print("Уведомления разрешены")
-            } else {
-                print("Уведомления запрещены")
-            }
+            print(granted ? "Уведомления разрешены" : "Уведомления запрещены")
         }
 
         UNUserNotificationCenter.current().delegate = self
 
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.example.app.refresh", using: nil) { task in
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
 
         return true
     }
 
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        NetworkManager.fetchData { fetchedCards in
-            self.saveCardsToCoreData(fetchedCards)
-            completionHandler(.newData)
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        scheduleAppRefresh()
+    }
+
+    private func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: "com.example.app.refresh")
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 15 * 60)
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Не удалось зарегистрировать задачу: \(error.localizedDescription)")
         }
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let aps = userInfo["aps"] as? [String: AnyObject], aps["content-available"] as? Int == 1 {
-            NetworkManager.fetchData { fetchedCards in
-                self.saveCardsToCoreData(fetchedCards)
-                completionHandler(.newData)
-            }
-        }
-    }
+    private func handleAppRefresh(task: BGAppRefreshTask) {
+        scheduleAppRefresh()
 
-    private func saveCardsToCoreData(_ cards: [Card]) {
         let context = PersistenceController.shared.container.viewContext
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
 
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Card")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        do {
-            try context.execute(deleteRequest)
-        } catch {
-            print("Ошибка при удалении старых данных: \(error.localizedDescription)")
-        }
-
-        for card in cards {
-            let newCard = Order(context: context)
-            newCard.id = Int64(card.id)
-            newCard.isAvailable = card.isAvailable
-            newCard.price = Int64(card.price)
+        task.expirationHandler = {
+            task.setTaskCompleted(success: false)
         }
 
         do {
+            let orders = try context.fetch(fetchRequest)
+            let currentDate = Date()
+            let calendar = Calendar.current
+
+            for order in orders {
+                if let creationDate = order.creationDate {
+                    var components = DateComponents()
+                    components.hour = Int(order.hour)
+                    components.minute = Int(order.minute)
+
+                    if let expirationDate = calendar.date(byAdding: components, to: creationDate),
+                       expirationDate <= currentDate
+                    {
+                        context.delete(order)
+                    }
+                }
+            }
+
             try context.save()
+            task.setTaskCompleted(success: true)
         } catch {
-            print("Ошибка сохранения в Core Data: \(error.localizedDescription)")
+            print("Ошибка при проверке истекших заказов: \(error.localizedDescription)")
+            task.setTaskCompleted(success: false)
+        }
+    }
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        let userInfo = response.notification.request.content.userInfo
+
+        if let identifier = userInfo["identifier"] as? String {
+            removeOrder(with: identifier)
+        }
+
+        completionHandler()
+    }
+
+    private func removeOrder(with identifier: String) {
+        let context = PersistenceController.shared.container.viewContext
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+
+        do {
+            let fetchedOrders = try context.fetch(fetchRequest)
+            if let orderToDelete = fetchedOrders.first {
+                context.delete(orderToDelete)
+                try context.save()
+                print("Удален заказ с идентификатором \(identifier)")
+            }
+        } catch {
+            print("Ошибка при удалении заказа: \(error.localizedDescription)")
         }
     }
 }

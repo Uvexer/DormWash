@@ -15,16 +15,36 @@ class OrdersViewModel: ObservableObject {
     let minutes = Array(1 ..< 59)
 
     private let viewContext: NSManagedObjectContext
+    private var timer: AnyCancellable?
 
     init(viewContext: NSManagedObjectContext) {
         self.viewContext = viewContext
         fetchOrders()
+        setupTimer()
+    }
+
+    deinit {
+        timer?.cancel()
+    }
+
+    private func setupTimer() {
+        timer = Timer.publish(every: 60, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.checkExpiredOrders()
+            }
     }
 
     func fetchOrders() {
         let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
         do {
             let ordersFetched = try viewContext.fetch(fetchRequest)
+            for order in ordersFetched {
+                if order.creationDate == nil {
+                    order.creationDate = Date()
+                }
+            }
+            try viewContext.save()
             orders = ordersFetched.map { OrderModel(from: $0) }
         } catch {
             print("Ошибка при получении заказов: \(error.localizedDescription)")
@@ -39,6 +59,8 @@ class OrdersViewModel: ObservableObject {
         newOrder.minute = Int16(selectedMinute)
         newOrder.isAvailable = true
         newOrder.price = 169
+        newOrder.creationDate = Date()
+        newOrder.identifier = UUID().uuidString
 
         do {
             try viewContext.save()
@@ -51,17 +73,39 @@ class OrdersViewModel: ObservableObject {
 
     func deleteOrder(at offsets: IndexSet) {
         offsets.map { orders[$0] }.forEach { order in
-            let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %d", order.id)
-            do {
-                let fetchedOrders = try viewContext.fetch(fetchRequest)
-                if let orderToDelete = fetchedOrders.first {
-                    viewContext.delete(orderToDelete)
-                    try viewContext.save()
-                    fetchOrders()
+            deleteOrder(withID: order.id)
+        }
+    }
+
+    private func deleteOrder(withID id: Int64) {
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+
+        do {
+            let fetchedOrders = try viewContext.fetch(fetchRequest)
+            if let orderToDelete = fetchedOrders.first {
+                viewContext.delete(orderToDelete)
+                try viewContext.save()
+                fetchOrders()
+            }
+        } catch {
+            print("Ошибка при удалении заказа: \(error.localizedDescription)")
+        }
+    }
+
+    private func checkExpiredOrders() {
+        let currentDate = Date()
+        let calendar = Calendar.current
+
+        for order in orders {
+            var components = DateComponents()
+            components.hour = order.hour
+            components.minute = order.minute
+
+            if let orderDate = calendar.date(byAdding: components, to: order.creationDate) {
+                if currentDate >= orderDate {
+                    deleteOrder(withID: order.id)
                 }
-            } catch {
-                print("Ошибка при удалении заказа: \(error.localizedDescription)")
             }
         }
     }
@@ -76,14 +120,17 @@ class OrdersViewModel: ObservableObject {
         }
     }
 
-    func scheduleNotification() {
+    func scheduleNotification(for order: OrderModel) {
         let content = UNMutableNotificationContent()
         content.title = "Время вышло!"
-        content.body = "Ваш заказ для \(selectedMachine) завершен."
+        content.body = "Ваш заказ для \(order.machine) завершен."
+        content.sound = .default
+        content.userInfo = ["identifier": order.identifier]
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: calculateTimeInterval(), repeats: false)
+        let timeInterval = calculateTimeInterval(for: order)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
 
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: order.identifier, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error {
@@ -92,15 +139,16 @@ class OrdersViewModel: ObservableObject {
         }
     }
 
-    private func calculateTimeInterval() -> TimeInterval {
-        let currentDate = Date()
-        var components = DateComponents()
-        components.hour = selectedHour
-        components.minute = selectedMinute
-
+    private func calculateTimeInterval(for order: OrderModel) -> TimeInterval {
         let calendar = Calendar.current
-        let futureDate = calendar.date(byAdding: components, to: currentDate) ?? currentDate
-        return futureDate.timeIntervalSince(currentDate)
+        var components = DateComponents()
+        components.hour = order.hour
+        components.minute = order.minute
+
+        if let futureDate = calendar.date(byAdding: components, to: order.creationDate) {
+            return max(0, futureDate.timeIntervalSinceNow)
+        }
+        return 0
     }
 
     func orderTimeString(for order: OrderModel) -> String {

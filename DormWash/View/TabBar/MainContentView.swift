@@ -5,17 +5,17 @@ struct MainContentView: View {
     @Binding var selectedCard: Card?
 
     var body: some View {
-        switch viewModel.selectedTab {
-        case 0:
+        ZStack {
             MachinesTabView(selectedCard: $selectedCard, cards: $viewModel.cards)
-                .onAppear { viewModel.startFetchingData() }
-                .onDisappear { viewModel.stopFetchingData() }
-        case 1:
+                .opacity(viewModel.selectedTab == 0 ? 1 : 0)
+                .onAppear { if viewModel.selectedTab == 0 { viewModel.startFetchingData() } }
+                .onDisappear { if viewModel.selectedTab == 0 { viewModel.stopFetchingData() } }
+
             OrdersTabView(viewContext: viewModel.viewContext)
-        case 2:
+                .opacity(viewModel.selectedTab == 1 ? 1 : 0)
+
             SettingsTabView()
-        default:
-            MachinesTabView(selectedCard: $selectedCard, cards: $viewModel.cards)
+                .opacity(viewModel.selectedTab == 2 ? 1 : 0)
         }
     }
 }
