@@ -14,7 +14,7 @@ struct MainContentView: View {
             OrdersTabView(viewContext: viewModel.viewContext)
                 .opacity(viewModel.selectedTab == 1 ? 1 : 0)
 
-            SettingsTabView()
+            AchieveView(viewContext: viewModel.viewContext)
                 .opacity(viewModel.selectedTab == 2 ? 1 : 0)
         }
     }

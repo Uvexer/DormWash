@@ -35,6 +35,18 @@ class OrdersViewModel: ObservableObject {
             }
     }
 
+    func fetchCurrentValue() -> Int {
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        do {
+            if let settings = try viewContext.fetch(fetchRequest).first {
+                return Int(settings.currentValue)
+            }
+        } catch {
+            print("Ошибка при получении currentValue: \(error)")
+        }
+        return 0
+    }
+
     func fetchOrders() {
         let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
         do {
@@ -64,10 +76,25 @@ class OrdersViewModel: ObservableObject {
 
         do {
             try viewContext.save()
+
+            let newCurrentValue = fetchCurrentValue() + 1
+            updateCurrentValue(to: newCurrentValue)
+
             fetchOrders()
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+
+    func updateCurrentValue(to value: Int) {
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        do {
+            let settings = try viewContext.fetch(fetchRequest).first ?? Order(context: viewContext)
+            settings.currentValue = Int64(value)
+            try viewContext.save()
+        } catch {
+            print("Ошибка при обновлении currentValue: \(error)")
         }
     }
 
