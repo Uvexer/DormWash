@@ -5,6 +5,7 @@ struct OrderModel: Identifiable, Hashable {
     var machine: String
     var hour: Int
     var minute: Int
+    var second: Int
     var isAvailable: Bool
     var price: Int64
     var creationDate: Date
@@ -15,6 +16,7 @@ struct OrderModel: Identifiable, Hashable {
         machine = order.machine ?? ""
         hour = Int(order.hour)
         minute = Int(order.minute)
+        second = Int(order.second)
         isAvailable = order.isAvailable
         price = order.price
         creationDate = order.creationDate ?? Date()

@@ -8,11 +8,13 @@ class OrdersViewModel: ObservableObject {
     @Published var selectedMachine: String = "Машинка 1"
     @Published var selectedHour: Int = 0
     @Published var selectedMinute: Int = 1
+    @Published var selectedSecond: Int = 0
     @Published var showMachineSelection = false
 
     let machines = ["Машинка 1", "Машинка 2", "Машинка 3", "Машинка 4", "Машинка 5", "Машинка 6", "Машинка 7", "Машинка 8"]
-    let hours = Array(0 ..< 23)
-    let minutes = Array(1 ..< 59)
+    let hours = Array(0 ..< 24)
+    let minutes = Array(0 ..< 60)
+    let seconds = Array(0 ..< 60)
 
     private let viewContext: NSManagedObjectContext
     private var timer: AnyCancellable?
@@ -28,7 +30,7 @@ class OrdersViewModel: ObservableObject {
     }
 
     private func setupTimer() {
-        timer = Timer.publish(every: 60, on: .main, in: .common)
+        timer = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 self?.checkExpiredOrders()
@@ -36,15 +38,7 @@ class OrdersViewModel: ObservableObject {
     }
 
     func fetchCurrentValue() -> Int {
-        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
-        do {
-            if let settings = try viewContext.fetch(fetchRequest).first {
-                return Int(settings.currentValue)
-            }
-        } catch {
-            print("Ошибка при получении currentValue: \(error)")
-        }
-        return 0
+        UserDefaults.standard.integer(forKey: "currentValue")
     }
 
     func fetchOrders() {
@@ -69,6 +63,7 @@ class OrdersViewModel: ObservableObject {
         newOrder.machine = selectedMachine
         newOrder.hour = Int16(selectedHour)
         newOrder.minute = Int16(selectedMinute)
+        newOrder.second = Int16(selectedSecond)
         newOrder.isAvailable = true
         newOrder.price = 169
         newOrder.creationDate = Date()
@@ -88,23 +83,18 @@ class OrdersViewModel: ObservableObject {
     }
 
     func updateCurrentValue(to value: Int) {
-        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
-        do {
-            let settings = try viewContext.fetch(fetchRequest).first ?? Order(context: viewContext)
-            settings.currentValue = Int64(value)
-            try viewContext.save()
-        } catch {
-            print("Ошибка при обновлении currentValue: \(error)")
-        }
+        UserDefaults.standard.set(value, forKey: "currentValue")
     }
 
     func deleteOrder(at offsets: IndexSet) {
-        offsets.map { orders[$0] }.forEach { order in
-            deleteOrder(withID: order.id)
+        for index in offsets {
+            let orderToDelete = orders[index]
+            deleteOrderFromContext(withID: orderToDelete.id)
         }
+        fetchOrders()
     }
 
-    private func deleteOrder(withID id: Int64) {
+    private func deleteOrderFromContext(withID id: Int64) {
         let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
 
@@ -113,7 +103,6 @@ class OrdersViewModel: ObservableObject {
             if let orderToDelete = fetchedOrders.first {
                 viewContext.delete(orderToDelete)
                 try viewContext.save()
-                fetchOrders()
             }
         } catch {
             print("Ошибка при удалении заказа: \(error.localizedDescription)")
@@ -124,17 +113,26 @@ class OrdersViewModel: ObservableObject {
         let currentDate = Date()
         let calendar = Calendar.current
 
+        var expiredOrderIDs: [Int64] = []
+
         for order in orders {
             var components = DateComponents()
             components.hour = order.hour
             components.minute = order.minute
+            components.second = order.second
 
             if let orderDate = calendar.date(byAdding: components, to: order.creationDate) {
                 if currentDate >= orderDate {
-                    deleteOrder(withID: order.id)
+                    expiredOrderIDs.append(order.id)
                 }
             }
         }
+
+        for id in expiredOrderIDs {
+            deleteOrderFromContext(withID: id)
+        }
+
+        fetchOrders()
     }
 
     func requestNotificationPermission() {
@@ -171,6 +169,7 @@ class OrdersViewModel: ObservableObject {
         var components = DateComponents()
         components.hour = order.hour
         components.minute = order.minute
+        components.second = order.second
 
         if let futureDate = calendar.date(byAdding: components, to: order.creationDate) {
             return max(0, futureDate.timeIntervalSinceNow)
@@ -181,6 +180,7 @@ class OrdersViewModel: ObservableObject {
     func orderTimeString(for order: OrderModel) -> String {
         let hour = String(format: "%02d", order.hour)
         let minute = String(format: "%02d", order.minute)
-        return "\(hour):\(minute)"
+        let second = String(format: "%02d", order.second)
+        return "\(hour):\(minute):\(second)"
     }
 }

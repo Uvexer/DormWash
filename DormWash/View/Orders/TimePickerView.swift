@@ -18,6 +18,13 @@ struct TimePickerView: View {
                 }
             }
             .pickerStyle(WheelPickerStyle())
+
+            Picker("Секунды", selection: $viewModel.selectedSecond) {
+                ForEach(viewModel.seconds, id: \.self) { second in
+                    Text("\(second) секунд")
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
         }
         .padding()
     }
