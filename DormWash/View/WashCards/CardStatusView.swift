@@ -15,7 +15,7 @@ struct CardStatusView: View {
             }
 
             Text("\(card.id)")
-                .foregroundColor(.black)
+                .foregroundColor(.black.opacity(0.6))
                 .font(.headline)
         }
     }

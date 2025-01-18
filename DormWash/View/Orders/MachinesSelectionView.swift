@@ -5,16 +5,8 @@ struct MachinesSelectionView: View {
 
     var body: some View {
         VStack {
-            Text("Выбери машинку")
+            Text("Выбери время заказа")
                 .font(.largeTitle)
-
-            Picker("Выберите машинку", selection: $viewModel.selectedMachine) {
-                ForEach(viewModel.machines, id: \.self) { machine in
-                    Text(machine)
-                }
-            }
-            .pickerStyle(WheelPickerStyle())
-            .padding()
 
             TimePickerView(viewModel: viewModel)
 

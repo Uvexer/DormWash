@@ -12,6 +12,7 @@ struct AchieveView: View {
         VStack {
             Text("Награды")
                 .font(.largeTitle)
+                .foregroundStyle(Color.white)
             ScrollView {
                 LazyVGrid(columns: AchieveConfig.columns, spacing: 20) {
                     ForEach(AchieveConfig.stepValues, id: \.self) { stepValue in
