@@ -37,8 +37,20 @@ class OrdersViewModel: ObservableObject {
             }
     }
 
+    func fetchActiveOrdersCount() -> Int {
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isAvailable == true")
+        do {
+            let activeOrders = try viewContext.count(for: fetchRequest)
+            return activeOrders
+        } catch {
+            print("Ошибка при получении активных заказов: \(error.localizedDescription)")
+            return 0
+        }
+    }
+
     func fetchCurrentValue() -> Int {
-        UserDefaults.standard.integer(forKey: "currentValue")
+        fetchActiveOrdersCount()
     }
 
     func fetchOrders() {

@@ -12,6 +12,7 @@ struct AchieveView: View {
         VStack {
             Text("Награды")
                 .font(.largeTitle)
+                .fontWeight(.bold)
                 .foregroundStyle(Color.white)
             ScrollView {
                 LazyVGrid(columns: AchieveConfig.columns, spacing: 20) {

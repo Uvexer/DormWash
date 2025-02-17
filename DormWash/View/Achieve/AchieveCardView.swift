@@ -11,26 +11,25 @@ struct AchieveCardView: View {
     }
 
     var body: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white.opacity(0.6))
-                .frame(width: 160, height: 160)
-                .overlay(
-                    VStack {
-                        Image(systemName: "washer")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 50, maxHeight: 50)
-                            .foregroundColor(.blue.opacity(0.9))
-                            .opacity(
-                                ordersViewModel.fetchCurrentValue() >= stepValue ? 1.0 : 0.3
-                            )
-                        Text("сделано стирок")
-                        Text("\(ordersViewModel.fetchCurrentValue()) из \(stepValue)")
-                            .font(.subheadline)
-                    }
+        VStack(alignment: .center, spacing: 10) {
+            Image(systemName: "washer")
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 50, maxHeight: 50)
+                .foregroundColor(.white)
+                .opacity(
+                    ordersViewModel.fetchCurrentValue() >= stepValue ? 1.0 : 0.3
                 )
+
+            VStack(alignment: .center, spacing: 5) {
+                Text("ты чистый")
+                    .multilineTextAlignment(.center)
+                Text("\(ordersViewModel.fetchCurrentValue()) из \(stepValue)")
+                    .font(.subheadline)
+                    .multilineTextAlignment(.center)
+            }
         }
+        .padding()
     }
 }
 

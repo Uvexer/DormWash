@@ -41,12 +41,45 @@ struct AllOrderView: View {
     }
 }
 
+import CoreData
+import SwiftUI
+
 struct AllOrdersListView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(
+        entity: Order.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Order.creationDate, ascending: false)]
+    ) var orders: FetchedResults<Order>
+
     var body: some View {
-        Text("Все заказы")
-            .font(.largeTitle)
-            .foregroundStyle(Color.black.opacity(0.6))
-            .padding()
-        List {}
+        VStack {
+            Text("Все заказы")
+                .font(.largeTitle)
+                .foregroundStyle(Color.white)
+                .padding()
+
+            List {
+                ForEach(orders, id: \.id) { order in
+                    VStack(alignment: .leading) {
+                        Text("ID: \(order.id)")
+                        Text("Цена: \(order.price)")
+                        Text("Доступен: \(order.isAvailable ? "Да" : "Нет")")
+                        Text("Дата создания: \(order.creationDate?.formatted() ?? "Не указано")")
+                    }
+                    .foregroundColor(.white)
+                }
+                .onDelete { indexSet in
+                    for index in indexSet {
+                        let order = orders[index]
+                        viewContext.delete(order)
+                    }
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        print("Ошибка при удалении заказа: \(error)")
+                    }
+                }
+            }
+        }
     }
 }

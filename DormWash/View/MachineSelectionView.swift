@@ -13,7 +13,12 @@ struct MachineSelectionView: View {
 
             Button(action: {
                 if let selectedCard {
-                    addOrder(id: Int64(selectedCard.id), isAvailable: selectedCard.isAvailable, price: Int64(selectedCard.price), in: viewContext)
+                    addOrder(
+                        id: Int64(selectedCard.id),
+                        isAvailable: selectedCard.isAvailable,
+                        price: Int64(selectedCard.price),
+                        in: viewContext
+                    )
                     presentationMode.wrappedValue.dismiss()
                 }
             }) {

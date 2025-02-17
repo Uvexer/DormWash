@@ -11,10 +11,11 @@ struct MainContentView: View {
                 .onAppear { if viewModel.selectedTab == 0 { viewModel.startFetchingData() } }
                 .onDisappear { if viewModel.selectedTab == 0 { viewModel.stopFetchingData() } }
 
-            OrdersTabView(viewContext: viewModel.viewContext)
+            //  OrdersTabView(viewContext: viewModel.viewContext)
+            AchieveView(viewContext: viewModel.viewContext)
                 .opacity(viewModel.selectedTab == 1 ? 1 : 0)
 
-            AchieveView(viewContext: viewModel.viewContext)
+            SettingsTabView()
                 .opacity(viewModel.selectedTab == 2 ? 1 : 0)
         }
     }
