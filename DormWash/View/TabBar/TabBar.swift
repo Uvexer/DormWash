@@ -13,7 +13,7 @@ struct TabBar: View {
                 .padding(3)
                 .frame(width: buttonWidth, height: buttonHeight)
                 .offset(x: CGFloat(selectedTab) * buttonWidth, y: 0)
-                .animation(.easeInOut(duration: 0.3), value: selectedTab)
+                .animation(.easeInOut(duration: 0.2), value: selectedTab)
 
             HStack(spacing: 0) {
                 ForEach(Tab.allCases, id: \.rawValue) { tab in

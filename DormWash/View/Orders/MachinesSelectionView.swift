@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MachinesSelectionView: View {
     @ObservedObject var viewModel: OrdersViewModel
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack {
@@ -15,6 +16,7 @@ struct MachinesSelectionView: View {
                 if let latestOrder = viewModel.orders.last {
                     viewModel.scheduleNotification(for: latestOrder)
                 }
+                dismiss()
                 viewModel.showMachineSelection = false
             }) {
                 Text("Добавить")

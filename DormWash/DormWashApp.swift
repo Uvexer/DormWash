@@ -17,6 +17,7 @@ struct DormWashApp: App {
             if isDataLoaded {
                 TabBarView(cards: cards, viewContext: persistenceController.container.viewContext)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .preferredColorScheme(.dark)
             } else {
                 SplashView(isDataLoaded: $isDataLoaded, cards: $cards)
             }

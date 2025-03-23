@@ -77,7 +77,7 @@ class OrdersViewModel: ObservableObject {
         newOrder.minute = Int16(selectedMinute)
         newOrder.second = Int16(selectedSecond)
         newOrder.isAvailable = true
-        newOrder.price = 169
+        newOrder.price = 179
         newOrder.creationDate = Date()
         newOrder.identifier = UUID().uuidString
 

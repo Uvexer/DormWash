@@ -61,9 +61,8 @@ struct AllOrdersListView: View {
             List {
                 ForEach(orders, id: \.id) { order in
                     VStack(alignment: .leading) {
-                        Text("ID: \(order.id)")
+                        Text("Номер заказа: \(order.id)")
                         Text("Цена: \(order.price)")
-                        Text("Доступен: \(order.isAvailable ? "Да" : "Нет")")
                         Text("Дата создания: \(order.creationDate?.formatted() ?? "Не указано")")
                     }
                     .foregroundColor(.white)
