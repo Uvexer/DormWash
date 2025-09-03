@@ -50,7 +50,18 @@ class OrdersViewModel: ObservableObject {
     }
 
     func fetchCurrentValue() -> Int {
-        fetchActiveOrdersCount()
+        fetchTotalOrdersCount()
+    }
+
+    func fetchTotalOrdersCount() -> Int {
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        do {
+            let totalOrders = try viewContext.count(for: fetchRequest)
+            return totalOrders
+        } catch {
+            print("Ошибка при получении количества заказов: \(error.localizedDescription)")
+            return 0
+        }
     }
 
     func fetchOrders() {
@@ -106,6 +117,13 @@ class OrdersViewModel: ObservableObject {
         fetchOrders()
     }
 
+    func deleteOrders(withIDs ids: [Int64]) {
+        ids.forEach { id in
+            deleteOrderFromContext(withID: id)
+        }
+        fetchOrders()
+    }
+
     private func deleteOrderFromContext(withID id: Int64) {
         let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
@@ -141,10 +159,25 @@ class OrdersViewModel: ObservableObject {
         }
 
         for id in expiredOrderIDs {
-            deleteOrderFromContext(withID: id)
+            markOrderAsUnavailable(withID: id)
         }
 
         fetchOrders()
+    }
+
+    private func markOrderAsUnavailable(withID id: Int64) {
+        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+
+        do {
+            let fetchedOrders = try viewContext.fetch(fetchRequest)
+            if let orderToUpdate = fetchedOrders.first {
+                orderToUpdate.isAvailable = false
+                try viewContext.save()
+            }
+        } catch {
+            print("Ошибка при обновлении заказа: \(error.localizedDescription)")
+        }
     }
 
     func requestNotificationPermission() {
