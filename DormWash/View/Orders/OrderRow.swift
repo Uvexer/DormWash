@@ -14,7 +14,7 @@ struct OrderRow: View {
                 HStack {
                     Image(systemName: "clock")
                         .foregroundColor(.gray)
-                    Text(orderTimeString(for: order))
+                    Text(timeString)
                         .foregroundColor(.gray)
                         .font(.subheadline)
                 }
@@ -44,7 +44,7 @@ struct OrderRow: View {
         )
     }
 
-    private func orderTimeString(for order: OrderModel) -> String {
+    private var timeString: String {
         let hour = String(format: "%02d", order.hour)
         let minute = String(format: "%02d", order.minute)
         return "\(hour):\(minute)"

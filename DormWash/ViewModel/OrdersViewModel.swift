@@ -37,18 +37,6 @@ class OrdersViewModel: ObservableObject {
             }
     }
 
-    func fetchActiveOrdersCount() -> Int {
-        let fetchRequest: NSFetchRequest<Order> = Order.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "isAvailable == true")
-        do {
-            let activeOrders = try viewContext.count(for: fetchRequest)
-            return activeOrders
-        } catch {
-            print("Ошибка при получении активных заказов: \(error.localizedDescription)")
-            return 0
-        }
-    }
-
     func fetchCurrentValue() -> Int {
         fetchTotalOrdersCount()
     }
@@ -95,9 +83,6 @@ class OrdersViewModel: ObservableObject {
         do {
             try viewContext.save()
 
-            let newCurrentValue = fetchCurrentValue() + 1
-            updateCurrentValue(to: newCurrentValue)
-
             fetchOrders()
         } catch {
             let nsError = error as NSError
@@ -105,17 +90,7 @@ class OrdersViewModel: ObservableObject {
         }
     }
 
-    func updateCurrentValue(to value: Int) {
-        UserDefaults.standard.set(value, forKey: "currentValue")
-    }
-
-    func deleteOrder(at offsets: IndexSet) {
-        for index in offsets {
-            let orderToDelete = orders[index]
-            deleteOrderFromContext(withID: orderToDelete.id)
-        }
-        fetchOrders()
-    }
+    
 
     func deleteOrders(withIDs ids: [Int64]) {
         ids.forEach { id in
@@ -222,10 +197,5 @@ class OrdersViewModel: ObservableObject {
         return 0
     }
 
-    func orderTimeString(for order: OrderModel) -> String {
-        let hour = String(format: "%02d", order.hour)
-        let minute = String(format: "%02d", order.minute)
-        let second = String(format: "%02d", order.second)
-        return "\(hour):\(minute):\(second)"
-    }
+    
 }
