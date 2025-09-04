@@ -35,13 +35,13 @@ struct OrdersListView: View {
                     }
                 } else {
                     List {
-                        ForEach(viewModel.orders.filter { $0.isAvailable }, id: \.id) { order in
+                        ForEach(viewModel.orders.filter(\.isAvailable), id: \.id) { order in
                             OrderRow(order: order)
                                 .padding(.vertical, 8)
                                 .listRowBackground(Color.clear)
                         }
                         .onDelete { indexSet in
-                            let activeOrders = viewModel.orders.filter { $0.isAvailable }
+                            let activeOrders = viewModel.orders.filter(\.isAvailable)
                             let idsToDelete = indexSet.map { activeOrders[$0].id }
                             viewModel.deleteOrders(withIDs: Array(idsToDelete))
                         }

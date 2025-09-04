@@ -90,10 +90,8 @@ class OrdersViewModel: ObservableObject {
         }
     }
 
-    
-
     func deleteOrders(withIDs ids: [Int64]) {
-        ids.forEach { id in
+        for id in ids {
             deleteOrderFromContext(withID: id)
         }
         fetchOrders()
@@ -196,6 +194,4 @@ class OrdersViewModel: ObservableObject {
         }
         return 0
     }
-
-    
 }

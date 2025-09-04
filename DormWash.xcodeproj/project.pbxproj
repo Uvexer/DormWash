@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		289034692D256636007E6BF2 /* DormWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 289034682D256636007E6BF2 /* DormWash.xcdatamodeld */; };
 		2890346A2D256636007E6BF2 /* DormWash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 289034682D256636007E6BF2 /* DormWash.xcdatamodeld */; };
+		28B2D5732E69AC51001FA76A /* WaterAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 28B2D5722E69AC51001FA76A /* WaterAnimation.json */; };
+		28B2D5752E69ACCD001FA76A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 28B2D5742E69ACCD001FA76A /* Lottie */; };
 		A80F79C02C76897400E58A79 /* DormWashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F79BF2C76897400E58A79 /* DormWashApp.swift */; };
 		A80F79C42C76897700E58A79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C32C76897700E58A79 /* Assets.xcassets */; };
 		A80F79C72C76897700E58A79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80F79C62C76897700E58A79 /* Preview Assets.xcassets */; };
@@ -51,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		2890346B2D25664A007E6BF2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		28B2D5722E69AC51001FA76A /* WaterAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WaterAnimation.json; sourceTree = "<group>"; };
 		A80F79BC2C76897400E58A79 /* DormWash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DormWash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80F79BF2C76897400E58A79 /* DormWashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormWashApp.swift; sourceTree = "<group>"; };
 		A80F79C12C76897400E58A79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A80F79D02C768B8900E58A79 /* SwiftSoup in Frameworks */,
+				28B2D5752E69ACCD001FA76A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,7 @@
 				A8DAC7B02CA1F392005C95C6 /* Info.plist */,
 				A80F79C32C76897700E58A79 /* Assets.xcassets */,
 				A80F79C52C76897700E58A79 /* Preview Content */,
+				28B2D5722E69AC51001FA76A /* WaterAnimation.json */,
 			);
 			path = DormWash;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			name = DormWash;
 			packageProductDependencies = (
 				A80F79CF2C768B8900E58A79 /* SwiftSoup */,
+				28B2D5742E69ACCD001FA76A /* Lottie */,
 			);
 			productName = DormWash;
 			productReference = A80F79BC2C76897400E58A79 /* DormWash.app */;
@@ -239,6 +245,7 @@
 			mainGroup = A80F79B32C76897400E58A79;
 			packageReferences = (
 				A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				28B2D5712E69AC19001FA76A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A80F79BD2C76897400E58A79 /* Products */;
 			projectDirPath = "";
@@ -256,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A80F79C72C76897700E58A79 /* Preview Assets.xcassets in Resources */,
+				28B2D5732E69AC51001FA76A /* WaterAnimation.json in Resources */,
 				A80F79C42C76897700E58A79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +600,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		28B2D5712E69AC19001FA76A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
 		A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup";
@@ -603,6 +619,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		28B2D5742E69ACCD001FA76A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28B2D5712E69AC19001FA76A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		A80F79CF2C768B8900E58A79 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A80F79CE2C768B8900E58A79 /* XCRemoteSwiftPackageReference "SwiftSoup" */;

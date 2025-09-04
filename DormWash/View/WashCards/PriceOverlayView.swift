@@ -47,6 +47,7 @@ struct TimerView: View {
         }
     }
 }
-#Preview{
+
+#Preview {
     PriceOverlayView(price: 179, isAvailable: true)
 }
